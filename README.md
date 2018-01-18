@@ -1,9 +1,4 @@
 <div align="center">
-  <br />
-  <p>
-    <img src="http://how-b1nzy-banned-me.tk/images/maxres-thunderstats.png" alt="ThunderStats"/>
-  </p>
-  <br />
   <p>
     <a href="https://discord.gg/uApUXn6">
       <img src="https://discordapp.com/api/guilds/297442085861064705/embed.png" alt="Discord" />
@@ -48,6 +43,18 @@ ThunderAPI is a simple, promise-based wrapper on the War Thunder site to fetch a
 
 - Getting news info
 - Getting update info
+
+## Install
+
+```bash
+npm install thunderapi
+```
+
+To install the **development** branch (please note that this may not be stable):
+
+```bash
+npm install devdutchy/thunderapi
+```
 
 ## Contributing
 
