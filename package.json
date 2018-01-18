@@ -1,0 +1,35 @@
+{
+  "name": "thunderapi",
+  "version": "0.1.0",
+  "description": "Easily get data from War Thunder without having to write lines as long as b1nzy's ban list ",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "npm run lint",
+    "start": "node -r dotenv/config ./src/index",
+    "lint": "./node_modules/.bin/eslint ./src"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/devdutchy/thunderapi.git"
+  },
+  "keywords": [
+    "war",
+    "thunder",
+    "node"
+  ],
+  "author": "Michel Nguyen <modzongaming@gmail.com> (dutchy.ga)",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/devdutchy/thunderapi/issues"
+  },
+  "homepage": "https://github.com/devdutchy/thunderapi#readme",
+  "dependencies": {
+    "common-tags": "^1.7.2",
+    "jsdom": "^11.5.1",
+    "snekfetch": "^3.6.1"
+  },
+  "devDependencies": {
+    "eslint": "^4.15.0",
+    "eslint-config-aqua": "^2.0.1"
+  }
+}

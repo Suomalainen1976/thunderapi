@@ -1,0 +1,19 @@
+language: node_js
+node_js:
+  - 8
+  - 9
+install: npm install
+script: bash ./travis/test.sh
+dist: trusty
+sudo: false
+notifications:
+  email:
+    - modzongaming@gmail.com
+before_script:
+  - export AUTHOR_NAME="$(git log -1 $TRAVIS_COMMIT --pretty="%aN")"
+after_success:
+  - chmod +x travis/success.sh
+  - bash ./travis/success.sh
+after_failure:
+  - chmod +x travis/fail.sh
+  - bash ./travis/fail.sh
