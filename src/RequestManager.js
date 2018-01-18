@@ -33,7 +33,7 @@ class RequestManager {
    * @return {Promise<SquadronInfo|PlayerInfo>}
    */
   async get(key, name) { // eslint-disable-line complexity
-    const data = {};
+    let data = {};
     if (key.toLowerCase() === "profile") {
       const res = await request
         .get(`https://warthunder.com/en/community/userinfo/?nick=${name}`)
@@ -405,7 +405,7 @@ class RequestManager {
         members.push(obj);
       }
 
-      const squadroninfo = {
+      data = {
         name: claninfo.children[0].children[0].children[0].children[0].children[1].innerHTML,
         image: claninfo.children[0].children[0].children[0].children[0].children[0].src,
         players: claninfo.children[0].children[0].children[0].children[0].children[2].innerHTML
@@ -438,9 +438,6 @@ class RequestManager {
         },
         members
       };
-      for (const info of squadroninfo) {
-        data[info] = info;
-      }
       return data;
     } else {
       data.error = "Invalid option specified";
@@ -451,87 +448,31 @@ class RequestManager {
 
 module.exports = RequestManager;
 
-// Typedefs
 /**
- * Provides squadron information
- * @typedef {Object} SquadronInfo
- * @property {string} name The name of the player
- * @property {string} image The link to the player's avatar
- * @property {string} description The squadron's description
- * @property {number} players The amount of players in the squadron
- * @property {string} createdAt The date when this squadron was created
- * @property {difficultyInfo} airKills The amount of air targets destroyed for all three difficulties
- * @property {difficultyInfo} groundKills The amount of ground targets destroyed for all three difficulties
- * @property {difficultyInfo} deaths The amount of deaths for all three difficulties
- * @property {difficultyInfo} flightTime The total flight time for all three difficulties
- * @property {memberInfo} members Data for each squadron member
+ * @external SquadronInfo
+ * @see {@link http://docs.dutchy.ga/global.html#SquadronInfo}
  */
-
 /**
- * Provides info for all three gamemodes
- * @typedef {Object} difficultyInfo
- * @property {Object|string} arcade The info for the Arcade gamemode
- * @property {Object|string} realistic The info for the Realistic gamemode
- * @property {Object|string} simulator The info for the Simulator gamemode
+ * @external memberInfo
+ * @see {@link http://docs.dutchy.ga/global.html#memberInfo}
  */
-
 /**
- * Provides info about Squadron members
- * @typedef {Object[]} memberInfo
- * @property {string} name The name of the squadron member
- * @property {difficultyInfo} rating The rating for the squadron member in all three gamemodes
- * @property {string} role The role of the squadron member, if available
- * @property {string} entry The date of entry for this member
+ * @external difficultyInfo
+ * @see {@link http://docs.dutchy.ga/global.html#difficultyInfo}
  */
-
 /**
- * Provides statistics about a user's profile
- * @typedef {Object} Profile
- * @property {string} image The URL to the player's in-game avatar
- * @property {string} nick The player's in-game name
- * @property {string} title The player's title, if he has one
- * @property {string} squadron The player's squadron, if he's in one
- * @property {number} level The player's in-game experience level
- * @property {string} registered The date when the player registered
- * @property {countryInfo} usa Statistics for the USA
- * @property {countryInfo} ussr Statistics for the USSR
- * @property {countryInfo} britain Statistics for Great Britain
- * @property {countryInfo} germany Statistics for Germany
- * @property {countryInfo} japan Statistics for Japan
- * @property {countryInfo} italy Statistics for Italy
+ * @external Profile
+ * @see {@link http://docs.dutchy.ga/global.html#Profile}
  */
-
 /**
- * Provides info about a nation for a player's profile
- * @typedef {Object} countryInfo
- * @property {number} vehicles The amount of total vehicles
- * @property {number} elite The amount of elite (fully researched) vehicles
- * @property {number} medals The amount of medals for the country
+ * @external countryInfo
+ * @see {@link http://docs.dutchy.ga/global.html#countryInfo}
  */
-
 /**
- * Provides game statistics about a player
- * @typedef {Object} ProfileStats
- * @property {string} victories The amount of victories
- * @property {string} completed The amount of completed battles
- * @property {string} ratio The victory/battle ratio
- * @property {string} sessions The amount of total sessions
- * @property {string} deaths The amount of deaths
- * @property {string} fighter The amount of time flown in a fighter
- * @property {string} bomber The amount of time flown in a bomber
- * @property {string} attacker The amount of time flown in an attacker
- * @property {string} tank The amount of time driven in a tank
- * @property {string} tankdestroyer The amount of time driven in a tank destroyer
- * @property {string} heavytank The amount of time driven in a heavy tank
- * @property {string} spaa The amount of time driven in a SPAA
- * @property {string} airkills The total amount of air targets destroyed
- * @property {string} groundkills The total amount of ground targets destroyed
- * @property {string} battletime The total amount of time played
+ * @external ProfileStats
+ * @see {@link http://docs.dutchy.ga/global.html#ProfileStats}
  */
-
 /**
- * Provides info about a player
- * @typedef {Object} PlayerInfo
- * @property {Profile} profile The player's profile
- * @property {difficultyInfo} stats Game statistics for the player
+ * @external PlayerInfo
+ * @see {@link http://docs.dutchy.ga/global.html#PlayerInfo}
  */

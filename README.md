@@ -58,7 +58,7 @@ npm install devdutchy/thunderapi
 
 ## Documentation
 
-[View the documentation here.](https://devdutchy.github.io/thunderapi)
+[View the documentation here.](http://docs.dutchy.ga)
 
 ## Contributing
 

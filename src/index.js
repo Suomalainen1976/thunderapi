@@ -73,12 +73,8 @@ class ThunderApi {
   }
 }
 
-exports.ThunderAPI = ThunderApi;
-
 module.exports = {
-  // Main class
   ThunderAPI: ThunderApi,
-  // Version
   version: Package.version
 };
 
