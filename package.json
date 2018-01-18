@@ -6,7 +6,8 @@
   "scripts": {
     "test": "npm run lint",
     "start": "node -r dotenv/config ./src/index",
-    "lint": "./node_modules/.bin/eslint ./src"
+    "lint": "./node_modules/.bin/eslint ./src",
+    "docs": "jsdoc src -r -c jsdoc.json -d ./docs -R README.md -t node_modules/minami"
   },
   "repository": {
     "type": "git",
@@ -25,11 +26,14 @@
   "homepage": "https://github.com/devdutchy/thunderapi#readme",
   "dependencies": {
     "common-tags": "^1.7.2",
+    "jsdoc": "^3.5.5",
     "jsdom": "^11.5.1",
     "snekfetch": "^3.6.1"
   },
   "devDependencies": {
     "eslint": "^4.15.0",
-    "eslint-config-aqua": "^2.0.1"
+    "eslint-config-aqua": "^2.0.1",
+    "jsdoc-strip-async-await": "^0.1.0",
+    "minami": "^1.2.3"
   }
 }

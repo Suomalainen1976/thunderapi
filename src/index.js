@@ -46,8 +46,8 @@ class ThunderApi {
   }
 
   /**
-   * Get's info about a squadron
-   * <note>You must provide the **full** name of the squadron,
+   * Get's info about a squadron.
+   * <note>You must provide the <strong>full</strong> name of the squadron,
    * e.g. "35th Gopnik nation battle group" instead of
    * "GOPNK".</note>
    * @param {string} name The **full** name of the squadron

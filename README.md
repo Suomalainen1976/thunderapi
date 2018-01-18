@@ -56,6 +56,10 @@ To install the **development** branch (please note that this may not be stable):
 npm install devdutchy/thunderapi
 ```
 
+## Documentation
+
+[View the documentation here.](https://devdutchy.github.io/thunderapi)
+
 ## Contributing
 
 If you wish to contribute to ThunderAPI, you are free to do so! Before getting started, please read the [contribution guidelines](https://github.com/devdutchy/thunderapi/blob/master/.github/CONTRIBUTING.md) first.
