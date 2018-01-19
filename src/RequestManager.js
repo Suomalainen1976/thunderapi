@@ -2,7 +2,10 @@ const request = require("snekfetch");
 const { JSDOM } = require("jsdom");
 const { oneLine } = require("common-tags");
 
-/** Request manager for ThunderApi */
+/**
+ * Request manager for ThunderApi
+ * @private
+ */
 class RequestManager {
   /**
    * Creates a new RequestManager
