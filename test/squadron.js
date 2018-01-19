@@ -8,7 +8,7 @@ async function getProfile() {
   try {
     const data = await thunderAPI.getSquadron(name);
     // eslint-disable-next-line no-console
-    console.log(data);
+    console.log("Data returned", data);
   } catch (error) {
     // eslint-disable-next-line no-console
     console.error("Oh no, an error occurred while attempting to fetch data!", error);
