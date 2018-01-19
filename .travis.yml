@@ -11,6 +11,7 @@ notifications:
     - modzongaming@gmail.com
 before_script:
   - export AUTHOR_NAME="$(git log -1 $TRAVIS_COMMIT --pretty="%aN")"
+  - bash ./travis/start.sh
 after_success:
   - chmod +x travis/success.sh
   - bash ./travis/success.sh
