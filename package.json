@@ -14,9 +14,12 @@
     "url": "git+https://github.com/devdutchy/thunderapi.git"
   },
   "keywords": [
-    "war",
-    "thunder",
-    "node"
+    "war thunder",
+    "gaming",
+    "node",
+    "wrapper",
+    "gaijin",
+    "war thunder API"
   ],
   "author": "Michel Nguyen <modzongaming@gmail.com> (dutchy.ga)",
   "license": "Apache-2.0",
