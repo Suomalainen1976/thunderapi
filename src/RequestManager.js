@@ -17,6 +17,7 @@ class RequestManager {
      * @type {string}
      */
     this.version = version;
+
     /**
      * User agent for requests
      * @type {string}
