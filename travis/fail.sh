@@ -1,4 +1,6 @@
-#!/usr/bin/env bash
+#!/bin/bash
+set -e
+
 echo 'Sending Discord Webhook';
 export BACKTICK='`';
 export TIMESTAMP=$(date --utc +%FT%TZ);
