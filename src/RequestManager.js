@@ -15,12 +15,14 @@ class RequestManager {
     /**
      * Version for the useragent
      * @type {string}
+     * @private
      */
     this.version = version;
 
     /**
      * User agent for requests
      * @type {string}
+     * @private
      */
     this.USER_AGENT = oneLine`
       ThunderAPI v${this.version} by devdutchy (https://github.com/devdutchy/thunderapi) being used by ${userAgent}
@@ -31,6 +33,7 @@ class RequestManager {
    * @param {string} key The key to search on, either `profile` or `squadron`
    * @param {string} name The name of the player/squadron
    * @return {Promise<SquadronInfo|PlayerInfo>}
+   * @private
    */
   async get(key, name) { // eslint-disable-line complexity
     let data = {};
