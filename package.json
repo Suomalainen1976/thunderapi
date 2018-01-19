@@ -4,9 +4,10 @@
   "description": "Easily get data from War Thunder without having to write huge chunks of code",
   "main": "src/index.js",
   "scripts": {
-    "test": "npm run lint",
+    "test": "npm run lint && npm run lint:typings",
     "lint": "./node_modules/.bin/eslint ./src",
-    "docs": "jsdoc src -r -c jsdoc.json -d ./docs -R README.md -t node_modules/minami"
+    "docs": "jsdoc src -r -c jsdoc.json -d ./docs -R README.md -t node_modules/minami",
+    "lint:typings": "tslint index.d.ts"
   },
   "repository": {
     "type": "git",
@@ -36,6 +37,7 @@
     "eslint": "^4.15.0",
     "eslint-config-aqua": "^2.0.1",
     "jsdoc-strip-async-await": "^0.1.0",
-    "minami": "^1.2.3"
+    "minami": "^1.2.3",
+    "tslint": "^5.9.1"
   }
 }

@@ -54,7 +54,33 @@ class RequestManager {
 
       if (!userinfo || !userstats) return null;
 
+      /**
+       * Provides game statistics about a player
+       * @typedef {Object} ProfileStats
+       * @property {string} victories The amount of victories
+       * @property {string} completed The amount of completed battles
+       * @property {string} ratio The victory/battle ratio
+       * @property {string} sessions The amount of total sessions
+       * @property {string} deaths The amount of deaths
+       * @property {string} fighter The amount of time flown in a fighter
+       * @property {string} bomber The amount of time flown in a bomber
+       * @property {string} attacker The amount of time flown in an attacker
+       * @property {string} tank The amount of time driven in a tank
+       * @property {string} tankdestroyer The amount of time driven in a tank destroyer
+       * @property {string} heavytank The amount of time driven in a heavy tank
+       * @property {string} spaa The amount of time driven in a SPAA
+       * @property {string} airkills The total amount of air targets destroyed
+       * @property {string} groundkills The total amount of ground targets destroyed
+       * @property {string} battletime The total amount of time played
+       */
       const stats = {
+        /**
+         * Provides info for all three gamemodes
+         * @typedef {Object} difficultyInfo
+         * @property {Object|string} arcade The info for the Arcade gamemode
+         * @property {Object|string} realistic The info for the Realistic gamemode
+         * @property {Object|string} simulator The info for the Simulator gamemode
+         */
         arcade: {
           victories: userstats.children[0].children[1].children[2].innerHTML.includes("N/A")
             ? userstats.children[0].children[1].children[2].innerHTML
@@ -302,7 +328,22 @@ class RequestManager {
             : userstats.children[0].children[17].children[4].innerHTML.replace("<div class=\" ptrim1\"></div>", "")
         }
       };
-
+      /**
+       * Provides statistics about a user's profile
+       * @typedef {Object} Profile
+       * @property {string} image The URL to the player's in-game avatar
+       * @property {string} nick The player's in-game name
+       * @property {string} title The player's title, if he has one
+       * @property {string} squadron The player's squadron, if he's in one
+       * @property {number} level The player's in-game experience level
+       * @property {string} registered The date when the player registered
+       * @property {countryInfo} usa Statistics for the USA
+       * @property {countryInfo} ussr Statistics for the USSR
+       * @property {countryInfo} britain Statistics for Great Britain
+       * @property {countryInfo} germany Statistics for Germany
+       * @property {countryInfo} japan Statistics for Japan
+       * @property {countryInfo} italy Statistics for Italy
+       */
       const profile = {
         image: userinfo.children[0].children[0].children[0].children[0].children[0].src,
         nick: name,
@@ -316,6 +357,13 @@ class RequestManager {
         registered: userinfo.children[0].children[0].children[0].children[0].children[5].innerHTML
           .replace("Registration date :", "")
           .trim(),
+        /**
+         * Provides info about a nation for a player's profile
+         * @typedef {Object} countryInfo
+         * @property {number} vehicles The amount of total vehicles
+         * @property {number} elite The amount of elite (fully researched) vehicles
+         * @property {number} medals The amount of medals for the country
+         */
         usa: {
           vehicles: userinfo.children[0].children[3].children[2].innerHTML,
           elite: userinfo.children[0].children[3].children[3].innerHTML,
@@ -360,6 +408,12 @@ class RequestManager {
         }
       };
 
+      /**
+       * Provides info about a player
+       * @typedef {Object} PlayerInfo
+       * @property {Profile} profile The player's profile
+       * @property {difficultyInfo} stats Game statistics for the player
+       */
       data.profile = profile;
       data.stats = stats;
 
@@ -392,6 +446,14 @@ class RequestManager {
         if (member.children.length !== 7) {
           continue;
         }
+        /**
+         * Provides info about Squadron members
+         * @typedef {Object[]} memberInfo
+         * @property {string} name The name of the squadron member
+         * @property {difficultyInfo} rating The rating for the squadron member in all three gamemodes
+         * @property {string} role The role of the squadron member, if available
+         * @property {string} entry The date of entry for this member
+         */
         const obj = {
           name: member.children[1].children[0].innerHTML,
           rating: {
@@ -447,32 +509,3 @@ class RequestManager {
 }
 
 module.exports = RequestManager;
-
-/**
- * @external SquadronInfo
- * @see {@link http://docs.dutchy.ga/global.html#SquadronInfo}
- */
-/**
- * @external memberInfo
- * @see {@link http://docs.dutchy.ga/global.html#memberInfo}
- */
-/**
- * @external difficultyInfo
- * @see {@link http://docs.dutchy.ga/global.html#difficultyInfo}
- */
-/**
- * @external Profile
- * @see {@link http://docs.dutchy.ga/global.html#Profile}
- */
-/**
- * @external countryInfo
- * @see {@link http://docs.dutchy.ga/global.html#countryInfo}
- */
-/**
- * @external ProfileStats
- * @see {@link http://docs.dutchy.ga/global.html#ProfileStats}
- */
-/**
- * @external PlayerInfo
- * @see {@link http://docs.dutchy.ga/global.html#PlayerInfo}
- */
