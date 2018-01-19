@@ -55,6 +55,8 @@ npm install thunderapi
 To install the **development** branch (please note that this may not be stable):
 
 ```bash
+# You need to have git installed and in your PATH to install the development branch
+
 npm install devdutchy/thunderapi
 ```
 
