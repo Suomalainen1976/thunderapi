@@ -4,10 +4,10 @@
   "description": "Easily get data from War Thunder without having to write huge chunks of code",
   "main": "src/index.js",
   "scripts": {
-    "test": "npm run lint && npm run lint:typings",
+    "test": "npm run lint",
     "lint": "./node_modules/.bin/eslint ./src",
     "docs": "jsdoc src -r -c jsdoc.json -d ./docs -R README.md -t node_modules/minami",
-    "lint:typings": "tslint index.d.ts"
+    "lint:typings": "tslint ./typings/index.d.ts"
   },
   "repository": {
     "type": "git",

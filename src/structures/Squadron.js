@@ -121,6 +121,8 @@ class Squadron {
    * @return {Map<string,squadronMemberInfo>}
    */
   get members() {
-    
+    return this.constructor.data.members;
   }
 }
+
+module.exports = Squadron;
