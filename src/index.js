@@ -1,4 +1,6 @@
 const RequestManager = require("./RequestManager");
+const Profile = require("./structures/Profile");
+const Squadron = require("./structures/Squadron");
 const Package = require("../package.json");
 
 /** A class to provide data from War Thunder's site including profile and squadron info */
@@ -25,15 +27,15 @@ class ThunderApi {
   /**
    * Get a player's profile
    * @param {string} player The profile of the player to fetch
-   * @return {Promise<PlayerInfo>}
+   * @return {Promise<Profile>}
    * @example
    * // The following example gets the profile of the player
    * // TheDutchy0412 and logs the squadron name
    * // and the registration date
    * ThunderAPI.getPlayer("TheDutchy0412")
-   *   .then(data => {
-   *     console.log(data.squadron);
-   *     console.log(data.registered);
+   *   .then(profile => {
+   *     console.log(profile.squadron);
+   *     console.log(profile.registered);
    *   })
    *   .catch(err => console.error("Oh no, an error occurred!", err));
    */
@@ -41,7 +43,8 @@ class ThunderApi {
     return new Promise(async (resolve, reject) => {
       const data = await this.requestManager.get("profile", player);
       if (data.error) reject(new Error(data.error));
-      resolve(data);
+      const profile = new Profile(data);
+      resolve(profile);
     });
   }
 
@@ -66,7 +69,7 @@ class ThunderApi {
    * e.g. "35th Gopnik nation battle group" instead of
    * "GOPNK".</note>
    * @param {string} name The **full** name of the squadron
-   * @return {Promise<SquadronInfo>}
+   * @return {Promise<Squadron>}
    * @example
    * // The following example gets info about
    * // the squadron 35th Gopnik nation battle group,
@@ -83,7 +86,8 @@ class ThunderApi {
     return new Promise(async (resolve, reject) => {
       const data = await this.requestManager.get("squadron", name);
       if (data.error) reject(new Error(data.error));
-      resolve(data);
+      const squadron = new Squadron(data);
+      resolve(squadron);
     });
   }
 }
