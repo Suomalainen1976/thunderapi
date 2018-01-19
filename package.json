@@ -5,7 +5,6 @@
   "main": "src/index.js",
   "scripts": {
     "test": "npm run lint",
-    "start": "node -r dotenv/config ./src/index",
     "lint": "./node_modules/.bin/eslint ./src",
     "docs": "jsdoc src -r -c jsdoc.json -d ./docs -R README.md -t node_modules/minami"
   },
