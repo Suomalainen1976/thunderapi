@@ -1,7 +1,7 @@
 {
   "name": "thunderapi",
   "version": "0.1.0",
-  "description": "Easily get data from War Thunder without having to write lines as long as b1nzy's ban list ",
+  "description": "Easily get data from War Thunder without having to write huge chunks of code",
   "main": "src/index.js",
   "scripts": {
     "test": "npm run lint",
