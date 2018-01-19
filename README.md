@@ -46,6 +46,8 @@ ThunderAPI is a simple, promise-based wrapper on the War Thunder site to fetch a
 
 ## Install
 
+**Node.js v8 or higher is required.**
+
 ```bash
 npm install thunderapi
 ```
@@ -54,6 +56,17 @@ To install the **development** branch (please note that this may not be stable):
 
 ```bash
 npm install devdutchy/thunderapi
+```
+
+## Example
+
+```js
+const { ThunderAPI } = require("thunderapi");
+const thunderAPI = new ThunderAPI("useragent");
+
+thunderAPI.getPlayer("Abinavski")
+  .then(data => console.log("Title:", data.title))
+  .catch(err => console.error("Oh no, an error occurred!\n", err));
 ```
 
 ## Documentation
