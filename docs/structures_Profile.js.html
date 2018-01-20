@@ -24,7 +24,7 @@
 <label for="nav-trigger" class="overlay"></label>
 
 <nav>
-    <li class="nav-link nav-home-link"><a href="index.html">Home</a></li><li class="nav-heading">Classes</li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="Profile.html">Profile</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Profile.html#toJSON">toJSON</a></span></li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="Squadron.html">Squadron</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Squadron.html#toJSON">toJSON</a></span></li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="ThunderApi.html">ThunderApi</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="ThunderApi.html#getPlayer">getPlayer</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="ThunderApi.html#getSquadron">getSquadron</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="ThunderApi.html#raw">raw</a></span></li><li class="nav-heading"><a href="global.html">Globals</a></li>
+    <li class="nav-link nav-home-link"><a href="index.html">Home</a></li><li class="nav-heading">Classes</li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="Profile.html">Profile</a></span></li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="Squadron.html">Squadron</a></span></li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="ThunderApi.html">ThunderApi</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="ThunderApi.html#getPlayer">getPlayer</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="ThunderApi.html#getSquadron">getSquadron</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="ThunderApi.html#raw">raw</a></span></li><li class="nav-heading"><a href="global.html">Globals</a></li>
 </nav>
 
 <div id="main">
@@ -102,23 +102,14 @@ class Profile {
    */
   constructor(data) {
     /**
-     * The raw data
-     * @type {PlayerData}
-     * @private
-     * @readonly
-     */
-    this.rawData = data;
-
-    /**
      * The player's statistics
      * @type {Map&lt;string, difficultyInfo>}
      * @readonly
      */
-    this.stats = new Map(
-      ["arcade", data.stats.arcade],
-      ["realistic", data.stats.realistic],
-      ["simulator", data.stats.simulator]
-    );
+    this.stats = new Map();
+    this.stats.set("arcade", data.stats.arcade);
+    this.stats.set("realistic", data.stats.realistic);
+    this.stats.set("simulator", data.stats.simulator);
 
     /**
      * The URL to the player's profile picture
@@ -153,48 +144,34 @@ class Profile {
      * @type {Map&lt;string,countryInfo>}
      * @readonly
      */
-    this.countries = new Map(
-      ["usa", data.profile.usa],
-      ["ussr", data.profile.ussr],
-      ["britain", data.profile.britain],
-      ["germany", data.profile.germany],
-      ["japan", data.profile.japan],
-      ["italy", data.profile.italy]
-    );
-  }
-  /**
-   * Gets name of the player's squadron, if he is in one.
-   * Returns null if the player is not in a squadron.
-   * @return {string}
-   * @readonly
-   */
-  get squadron() {
-    if (this.rawData.profile.squadron.toLowerCase() !== "none") {
-      return this.rawData.profile.squadron.trim();
-    } else {
-      return null;
-    }
-  }
-  /**
-   * Gets the title of the player, if he has any.
-   * Returns null if the player does not have a
-   * title set.
-   * @return {string}
-   * @readonly
-   */
-  get title() {
-    if (this.rawData.profile.title !== "") {
-      return this.rawData.profile.title;
-    } else {
-      return null;
-    }
-  }
-  /**
-   * Parses the raw data to JSON
-   * @return {JSON}
-   */
-  toJSON() {
-    return JSON.stringify(this.rawData);
+    this.countries = new Map();
+    this.countries.set("usa", data.profile.usa);
+    this.countries.set("ussr", data.profile.ussr);
+    this.countries.set("britain", data.profile.britain);
+    this.countries.set("germany", data.profile.germany);
+    this.countries.set("japan", data.profile.japan);
+    this.countries.set("italy", data.profile.italy);
+
+    /**
+     * The squadron name of the player, if he is in any.
+     * Returns null if the player is not in a squadron
+     * @type {string}
+     * @readonly
+     */
+    this.squadron = data.profile.squadron.toLowerCase() !== "none"
+      ? data.profile.squadron.trim()
+      : null;
+
+    /**
+     * The title of the player, if he has set any.
+     * Returns null if the player does not have
+     * a title set.
+     * @type {string}
+     * @readonly
+     */
+    this.title = data.profile.title !== ""
+      ? data.profile.title.trim()
+      : null;
   }
 }
 
@@ -210,7 +187,7 @@ module.exports = Profile;</code></pre>
 <br class="clear">
 
 <footer>
-    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Sat Jan 20 2018 12:42:42 GMT+0100 (West-Europa (standaardtijd)) using the Minami theme.
+    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Sat Jan 20 2018 16:01:21 GMT+0100 (West-Europa (standaardtijd)) using the Minami theme.
 </footer>
 
 <script>prettyPrint();</script>

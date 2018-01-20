@@ -6,9 +6,20 @@ declare namespace thunderapi {
     public constructor(userAgent: string);
     private readonly USER_AGENT: string;
     private readonly requestManager: RequestManager;
+    private readonly cacheSweepInterval: number;
+    private cache: Map<string, Profile | Squadron>;
+    private _intervals: NodeJS.Timer[];
 
-    public getPlayer(player: string): Promise<object>;
-    public getSquadron(name: string): Promise<object>;
+    public getPlayer(
+      player: string,
+      getFromCache?: boolean = true,
+      shouldCache?: boolean = true
+    ): Promise<Profile>;
+    public getSquadron(
+      name: string,
+      getFromCache?: boolean = true,
+      shouldCache?: boolean = true
+    ): Promise<Squadron>;
     public raw(key: string, name: string): Promise<object>;
   }
 
@@ -246,8 +257,6 @@ declare namespace thunderapi {
       }
     });
 
-    private readonly rawData: object;
-
     public readonly stats: Map<string, {
       victories: number;
       completed: number;
@@ -274,11 +283,8 @@ declare namespace thunderapi {
       elite: number;
       medals: number;
     }>;
-
-    public get squadron(): string;
-    public get title(): string;
-
-    public toJSON(): JSON;
+    public readonly squadron: string;
+    public readonly title: string;
   }
 
   export class Squadron {
@@ -320,33 +326,15 @@ declare namespace thunderapi {
       }[];
     });
 
-    private readonly rawData: object;
-
     public readonly name: string;
     public readonly image: string;
     public readonly players: number;
     public readonly description: string;
     public readonly createdAt: string;
-    public readonly airKills: Map<string, {
-      arcade: string;
-      realistic: string;
-      simulator: string;
-    }>;
-    public readonly groundKills: Map<string, {
-      arcade: string;
-      realistic: string;
-      simulator: string;
-    }>;
-    public readonly deaths: Map<string, {
-      arcade: string;
-      realistic: string;
-      simulator: string;
-    }>;
-    public readonly flighttime: Map<string, {
-      arcade: string;
-      realistic: string;
-      simulator: string;
-    }>;
+    public readonly airKills: Map<string, string>;
+    public readonly groundKills: Map<string, string>;
+    public readonly deaths: Map<string, string>;
+    public readonly flighttime: Map<string, string>;
 
     public members: Map<string, {
       name: string;
@@ -358,7 +346,5 @@ declare namespace thunderapi {
       role: string;
       entry: string;
     }>;
-
-    public toJSON(): JSON;
   }
 }

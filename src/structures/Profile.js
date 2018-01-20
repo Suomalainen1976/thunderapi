@@ -61,23 +61,14 @@ class Profile {
    */
   constructor(data) {
     /**
-     * The raw data
-     * @type {PlayerData}
-     * @private
-     * @readonly
-     */
-    this.rawData = data;
-
-    /**
      * The player's statistics
      * @type {Map<string, difficultyInfo>}
      * @readonly
      */
-    this.stats = new Map(
-      ["arcade", data.stats.arcade],
-      ["realistic", data.stats.realistic],
-      ["simulator", data.stats.simulator]
-    );
+    this.stats = new Map();
+    this.stats.set("arcade", data.stats.arcade);
+    this.stats.set("realistic", data.stats.realistic);
+    this.stats.set("simulator", data.stats.simulator);
 
     /**
      * The URL to the player's profile picture
@@ -112,48 +103,34 @@ class Profile {
      * @type {Map<string,countryInfo>}
      * @readonly
      */
-    this.countries = new Map(
-      ["usa", data.profile.usa],
-      ["ussr", data.profile.ussr],
-      ["britain", data.profile.britain],
-      ["germany", data.profile.germany],
-      ["japan", data.profile.japan],
-      ["italy", data.profile.italy]
-    );
-  }
-  /**
-   * Gets name of the player's squadron, if he is in one.
-   * Returns null if the player is not in a squadron.
-   * @return {string}
-   * @readonly
-   */
-  get squadron() {
-    if (this.rawData.profile.squadron.toLowerCase() !== "none") {
-      return this.rawData.profile.squadron.trim();
-    } else {
-      return null;
-    }
-  }
-  /**
-   * Gets the title of the player, if he has any.
-   * Returns null if the player does not have a
-   * title set.
-   * @return {string}
-   * @readonly
-   */
-  get title() {
-    if (this.rawData.profile.title !== "") {
-      return this.rawData.profile.title;
-    } else {
-      return null;
-    }
-  }
-  /**
-   * Parses the raw data to JSON
-   * @return {JSON}
-   */
-  toJSON() {
-    return JSON.stringify(this.rawData);
+    this.countries = new Map();
+    this.countries.set("usa", data.profile.usa);
+    this.countries.set("ussr", data.profile.ussr);
+    this.countries.set("britain", data.profile.britain);
+    this.countries.set("germany", data.profile.germany);
+    this.countries.set("japan", data.profile.japan);
+    this.countries.set("italy", data.profile.italy);
+
+    /**
+     * The squadron name of the player, if he is in any.
+     * Returns null if the player is not in a squadron
+     * @type {string}
+     * @readonly
+     */
+    this.squadron = data.profile.squadron.toLowerCase() !== "none"
+      ? data.profile.squadron.trim()
+      : null;
+
+    /**
+     * The title of the player, if he has set any.
+     * Returns null if the player does not have
+     * a title set.
+     * @type {string}
+     * @readonly
+     */
+    this.title = data.profile.title !== ""
+      ? data.profile.title.trim()
+      : null;
   }
 }
 
