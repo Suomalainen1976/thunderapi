@@ -84,44 +84,40 @@ class Squadron {
      * @type {Map<string,squadronDifficultyStats>}
      * @readonly
      */
-    this.airkills = new Map(
-      ["arcade", data.airKills.arcade],
-      ["realistic", data.airKills.realistic],
-      ["simulator", data.airKills.simulator]
-    );
+    this.airkills = new Map();
+    this.airkills.set("arcade", data.airKills.arcade);
+    this.airkills.set("realistic", data.airKills.realistic);
+    this.airkills.set("simulator", data.airKills.simulator);
 
     /**
      * The amount of ground targets destroyed, mapped by gamemode
      * @type {Map<string,squadronDifficultyStats>}
      * @readonly
      */
-    this.groundkills = new Map(
-      ["arcade", data.groundKills.arcade],
-      ["realistic", data.groundKills.realistic],
-      ["simulator", data.groundKills.simulator]
-    );
+    this.groundkills = new Map();
+    this.groundkills.set("arcade", data.groundKills.arcade);
+    this.groundkills.set("realistic", data.groundKills.realistic);
+    this.groundkills.set("simulator", data.groundKills.simulator);
 
     /**
      * The amount of deaths, mapped by gamemode
      * @type {Map<string,squadronDifficultyStats>}
      * @readonly
      */
-    this.deaths = new Map(
-      ["arcade", data.deaths.arcade],
-      ["realistic", data.deaths.realistic],
-      ["simulator", data.deaths.simulator]
-    );
+    this.deaths = new Map();
+    this.deaths.set("arcade", data.deaths.arcade);
+    this.deaths.set("realistic", data.deaths.realistic);
+    this.deaths.set("simulator", data.deaths.simulator);
 
     /**
      * The total battle time, mapped by gamemode
      * @type {Map<string,squadronDifficultyStats>}
      * @readonly
      */
-    this.flighttime = new Map(
-      ["arcade", data.flightTime.arcade],
-      ["realistic", data.flightTime.realistic],
-      ["simulator", data.flightTime.simulator]
-    );
+    this.flighttime = new Map();
+    this.flighttime.set("arcade", data.flightTime.arcade);
+    this.flighttime.set("realistic", data.flightTime.realistic);
+    this.flighttime.set("simulator", data.flightTime.simulator);
 
     /**
      * Get the amount of members, mapped by name
