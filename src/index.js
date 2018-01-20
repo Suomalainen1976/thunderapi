@@ -2,7 +2,6 @@ const RequestManager = require("./RequestManager");
 const Profile = require("./structures/Profile");
 const Squadron = require("./structures/Squadron");
 const Package = require("../package.json");
-
 /** A class to provide data from War Thunder's site including profile and squadron info */
 class ThunderApi {
   /**
@@ -35,6 +34,7 @@ class ThunderApi {
     /**
      * The time cache should be sweeped, in milliseconds
      * @type {number}
+     * @readonly
      */
     this.cacheSweepInterval = cacheSweepInterval;
     /**

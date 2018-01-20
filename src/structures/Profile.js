@@ -132,13 +132,6 @@ class Profile {
       ? data.profile.title.trim()
       : null;
   }
-  /**
-   * Parses the raw data to JSON
-   * @return {JSON}
-   */
-  toJSON() {
-    return JSON.stringify(this.rawData);
-  }
 }
 
 module.exports = Profile;

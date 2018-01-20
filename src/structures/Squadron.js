@@ -38,13 +38,6 @@ class Squadron {
    */
   constructor(data) {
     /**
-     * The raw squadron data
-     * @type {SquadronData}
-     * @readonly
-     * @private
-     */
-    this.rawData = data;
-    /**
      * The squadron name
      * @type {string}
      * @readonly
@@ -125,13 +118,6 @@ class Squadron {
      */
     this.members = new Map();
     for (const member of data.members) this.members.set(member.name, member);
-  }
-  /**
-   * Parses the raw data to JSON
-   * @return {JSON}
-   */
-  toJSON() {
-    return JSON.stringify(this.rawData);
   }
 }
 
