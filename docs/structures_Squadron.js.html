@@ -24,7 +24,7 @@
 <label for="nav-trigger" class="overlay"></label>
 
 <nav>
-    <li class="nav-link nav-home-link"><a href="index.html">Home</a></li><li class="nav-heading">Classes</li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="Profile.html">Profile</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Profile.html#toJSON">toJSON</a></span></li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="Squadron.html">Squadron</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Squadron.html#toJSON">toJSON</a></span></li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="ThunderApi.html">ThunderApi</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="ThunderApi.html#getPlayer">getPlayer</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="ThunderApi.html#getSquadron">getSquadron</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="ThunderApi.html#raw">raw</a></span></li><li class="nav-heading"><a href="global.html">Globals</a></li>
+    <li class="nav-link nav-home-link"><a href="index.html">Home</a></li><li class="nav-heading">Classes</li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="Profile.html">Profile</a></span></li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="Squadron.html">Squadron</a></span></li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="ThunderApi.html">ThunderApi</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="ThunderApi.html#getPlayer">getPlayer</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="ThunderApi.html#getSquadron">getSquadron</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="ThunderApi.html#raw">raw</a></span></li><li class="nav-heading"><a href="global.html">Globals</a></li>
 </nav>
 
 <div id="main">
@@ -79,13 +79,6 @@ class Squadron {
    */
   constructor(data) {
     /**
-     * The raw squadron data
-     * @type {SquadronData}
-     * @readonly
-     * @private
-     */
-    this.rawData = data;
-    /**
      * The squadron name
      * @type {string}
      * @readonly
@@ -125,44 +118,40 @@ class Squadron {
      * @type {Map&lt;string,squadronDifficultyStats>}
      * @readonly
      */
-    this.airkills = new Map(
-      ["arcade", data.airKills.arcade],
-      ["realistic", data.airKills.realistic],
-      ["simulator", data.airKills.simulator]
-    );
+    this.airkills = new Map();
+    this.airkills.set("arcade", data.airKills.arcade);
+    this.airkills.set("realistic", data.airKills.realistic);
+    this.airkills.set("simulator", data.airKills.simulator);
 
     /**
      * The amount of ground targets destroyed, mapped by gamemode
      * @type {Map&lt;string,squadronDifficultyStats>}
      * @readonly
      */
-    this.groundkills = new Map(
-      ["arcade", data.groundKills.arcade],
-      ["realistic", data.groundKills.realistic],
-      ["simulator", data.groundKills.simulator]
-    );
+    this.groundkills = new Map();
+    this.groundkills.set("arcade", data.groundKills.arcade);
+    this.groundkills.set("realistic", data.groundKills.realistic);
+    this.groundkills.set("simulator", data.groundKills.simulator);
 
     /**
      * The amount of deaths, mapped by gamemode
      * @type {Map&lt;string,squadronDifficultyStats>}
      * @readonly
      */
-    this.deaths = new Map(
-      ["arcade", data.deaths.arcade],
-      ["realistic", data.deaths.realistic],
-      ["simulator", data.deaths.simulator]
-    );
+    this.deaths = new Map();
+    this.deaths.set("arcade", data.deaths.arcade);
+    this.deaths.set("realistic", data.deaths.realistic);
+    this.deaths.set("simulator", data.deaths.simulator);
 
     /**
      * The total battle time, mapped by gamemode
      * @type {Map&lt;string,squadronDifficultyStats>}
      * @readonly
      */
-    this.flighttime = new Map(
-      ["arcade", data.flightTime.arcade],
-      ["realistic", data.flightTime.realistic],
-      ["simulator", data.flightTime.simulator]
-    );
+    this.flighttime = new Map();
+    this.flighttime.set("arcade", data.flightTime.arcade);
+    this.flighttime.set("realistic", data.flightTime.realistic);
+    this.flighttime.set("simulator", data.flightTime.simulator);
 
     /**
      * Get the amount of members, mapped by name
@@ -170,13 +159,6 @@ class Squadron {
      */
     this.members = new Map();
     for (const member of data.members) this.members.set(member.name, member);
-  }
-  /**
-   * Parses the raw data to JSON
-   * @return {JSON}
-   */
-  toJSON() {
-    return JSON.stringify(this.rawData);
   }
 }
 
@@ -192,7 +174,7 @@ module.exports = Squadron;</code></pre>
 <br class="clear">
 
 <footer>
-    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Sat Jan 20 2018 12:42:42 GMT+0100 (West-Europa (standaardtijd)) using the Minami theme.
+    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Sat Jan 20 2018 16:01:21 GMT+0100 (West-Europa (standaardtijd)) using the Minami theme.
 </footer>
 
 <script>prettyPrint();</script>
