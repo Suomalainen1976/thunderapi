@@ -14,12 +14,14 @@ class ThunderApi {
      * The User Agent
      * @type {string}
      * @private
+     * @readonly
      */
     this.USER_AGENT = userAgent;
     /**
      * The Request Manager for ThunderApi
      * @type {RequestManager}
      * @private
+     * @readonly
      */
     this.requestManager = new RequestManager(this.USER_AGENT, Package.version);
   }
@@ -90,9 +92,27 @@ class ThunderApi {
       resolve(squadron);
     });
   }
+
+  /**
+   * Get raw data
+   * @param {string} key The raw data to get, either squadron or profile
+   * @param {string} name The name of the squadron/player to get raw data from
+   * @return {Promise<PlayerData|SquadronData>}
+   */
+  raw(key, name) {
+    return new Promise(async (resolve, reject) => {
+      const data = await this.requestManager.get(key, name);
+      if (data.error) reject(new Error(data.error));
+      resolve(data);
+    });
+  }
 }
 
 module.exports = {
   ThunderAPI: ThunderApi,
-  version: Package.version
+  RequestManager,
+  version: Package.version,
+
+  Profile: require("./structures/Profile"),
+  Squadron: require("./structures/squadron")
 };

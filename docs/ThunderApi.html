@@ -24,7 +24,7 @@
 <label for="nav-trigger" class="overlay"></label>
 
 <nav>
-    <li class="nav-link nav-home-link"><a href="index.html">Home</a></li><li class="nav-heading">Classes</li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="ThunderApi.html">ThunderApi</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="ThunderApi.html#getPlayer">getPlayer</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="ThunderApi.html#getSquadron">getSquadron</a></span></li><li class="nav-heading"><a href="global.html">Globals</a></li>
+    <li class="nav-link nav-home-link"><a href="index.html">Home</a></li><li class="nav-heading">Classes</li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="Profile.html">Profile</a></span></li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="Squadron.html">Squadron</a></span></li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="ThunderApi.html">ThunderApi</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="ThunderApi.html#getPlayer">getPlayer</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="ThunderApi.html#getSquadron">getSquadron</a></span></li><li class="nav-heading"><a href="global.html">Globals</a></li>
 </nav>
 
 <div id="main">
@@ -103,7 +103,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line5">line 5</a>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line7">line 7</a>
     </li></ul></dd>
     
 
@@ -213,7 +213,7 @@
 
     
 
-    <h4 class="name" id="getPlayer"><span class="type-signature"></span>getPlayer<span class="signature">(player)</span><span class="type-signature"> &rarr; {Promise.&lt;<a href="global.html#PlayerInfo">PlayerInfo</a>>}</span></h4>
+    <h4 class="name" id="getPlayer"><span class="type-signature"></span>getPlayer<span class="signature">(player)</span><span class="type-signature"> &rarr; {Promise.&lt;<a href="Profile.html">Profile</a>>}</span></h4>
 
     
 
@@ -256,7 +256,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line40">line 40</a>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line42">line 42</a>
     </li></ul></dd>
     
 
@@ -350,7 +350,7 @@
     </dt>
     <dd>
         
-<span class="param-type"><code>Promise.&lt;<a href="global.html#PlayerInfo">PlayerInfo</a>></code></span>
+<span class="param-type"><code>Promise.&lt;<a href="Profile.html">Profile</a>></code></span>
 
 
     </dd>
@@ -365,7 +365,7 @@
 <div class="section-examples">
 <h5>Example</h5>
 
-    <pre class="prettyprint"><code>// The following example gets the profile of the player// TheDutchy0412 and logs the squadron name// and the registration dateThunderAPI.getPlayer("TheDutchy0412")  .then(data => {    console.log(data.squadron);    console.log(data.registered);  })  .catch(err => console.error("Oh no, an error occurred!", err));</code></pre>
+    <pre class="prettyprint"><code>// The following example gets the profile of the player// TheDutchy0412 and logs the squadron name// and the registration dateThunderAPI.getPlayer("TheDutchy0412")  .then(profile => {    console.log(profile.squadron);    console.log(profile.registered);  })  .catch(err => console.error("Oh no, an error occurred!", err));</code></pre>
 
 </div>
 
@@ -376,7 +376,7 @@
 
     
 
-    <h4 class="name" id="getSquadron"><span class="type-signature"></span>getSquadron<span class="signature">(name)</span><span class="type-signature"> &rarr; {Promise.&lt;<a href="global.html#SquadronInfo">SquadronInfo</a>>}</span></h4>
+    <h4 class="name" id="getSquadron"><span class="type-signature"></span>getSquadron<span class="signature">(name)</span><span class="type-signature"> &rarr; {Promise.&lt;<a href="Squadron.html">Squadron</a>>}</span></h4>
 
     
 
@@ -419,7 +419,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line82">line 82</a>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line85">line 85</a>
     </li></ul></dd>
     
 
@@ -513,7 +513,7 @@
     </dt>
     <dd>
         
-<span class="param-type"><code>Promise.&lt;<a href="global.html#SquadronInfo">SquadronInfo</a>></code></span>
+<span class="param-type"><code>Promise.&lt;<a href="Squadron.html">Squadron</a>></code></span>
 
 
     </dd>
@@ -551,7 +551,7 @@
 <br class="clear">
 
 <footer>
-    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Fri Jan 19 2018 15:57:13 GMT+0100 (West-Europa (standaardtijd)) using the Minami theme.
+    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Sat Jan 20 2018 11:23:25 GMT+0100 (West-Europa (standaardtijd)) using the Minami theme.
 </footer>
 
 <script>prettyPrint();</script>

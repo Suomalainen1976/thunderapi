@@ -24,7 +24,7 @@
 <label for="nav-trigger" class="overlay"></label>
 
 <nav>
-    <li class="nav-link nav-home-link"><a href="index.html">Home</a></li><li class="nav-heading">Classes</li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="ThunderApi.html">ThunderApi</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="ThunderApi.html#getPlayer">getPlayer</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="ThunderApi.html#getSquadron">getSquadron</a></span></li><li class="nav-heading"><a href="global.html">Globals</a></li>
+    <li class="nav-link nav-home-link"><a href="index.html">Home</a></li><li class="nav-heading">Classes</li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="Profile.html">Profile</a></span></li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="Squadron.html">Squadron</a></span></li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="ThunderApi.html">ThunderApi</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="ThunderApi.html#getPlayer">getPlayer</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="ThunderApi.html#getSquadron">getSquadron</a></span></li><li class="nav-heading"><a href="global.html">Globals</a></li>
 </nav>
 
 <div id="main">
@@ -262,7 +262,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="RequestManager.js.html">RequestManager.js</a>, <a href="RequestManager.js.html#line366">line 366</a>
+        <a href="structures_Profile.js.html">structures/Profile.js</a>, <a href="structures_Profile.js.html#line44">line 44</a>
     </li></ul></dd>
     
 
@@ -339,10 +339,7 @@
             <td class="type">
             
                 
-<span class="param-type"><code>Object</code></span>
-|
-
-<span class="param-type"><code>string</code></span>
+<span class="param-type"><code><a href="global.html#profileStats">profileStats</a></code></span>
 
 
             
@@ -367,10 +364,7 @@
             <td class="type">
             
                 
-<span class="param-type"><code>Object</code></span>
-|
-
-<span class="param-type"><code>string</code></span>
+<span class="param-type"><code><a href="global.html#profileStats">profileStats</a></code></span>
 
 
             
@@ -395,10 +389,7 @@
             <td class="type">
             
                 
-<span class="param-type"><code>Object</code></span>
-|
-
-<span class="param-type"><code>string</code></span>
+<span class="param-type"><code><a href="global.html#profileStats">profileStats</a></code></span>
 
 
             
@@ -449,7 +440,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="RequestManager.js.html">RequestManager.js</a>, <a href="RequestManager.js.html#line83">line 83</a>
+        <a href="structures_Profile.js.html">structures/Profile.js</a>, <a href="structures_Profile.js.html#line51">line 51</a>
     </li></ul></dd>
     
 
@@ -481,216 +472,13 @@
             
                 
 <div class="section-members">
-<h4 class="name" id="memberInfo">memberInfo</h4>
+<h4 class="name" id="PlayerData">PlayerData</h4>
 
 
 
 
 <div class="description">
-    Provides info about Squadron members
-</div>
-
-
-
-
-
-    <h5 class="subsection-title">Properties:</h5>
-
-    
-
-<table class="props">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>name</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><code>string</code></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The name of the squadron member</td>
-        </tr>
-
-        
-
-    
-
-        <tr>
-            
-                <td class="name"><code>rating</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><code><a href="global.html#difficultyInfo">difficultyInfo</a></code></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The rating for the squadron member in all three gamemodes</td>
-        </tr>
-
-        
-
-    
-
-        <tr>
-            
-                <td class="name"><code>role</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><code>string</code></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The role of the squadron member, if available</td>
-        </tr>
-
-        
-
-    
-
-        <tr>
-            
-                <td class="name"><code>entry</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><code>string</code></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The date of entry for this member</td>
-        </tr>
-
-        
-
-    
-    </tbody>
-</table>
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="RequestManager.js.html">RequestManager.js</a>, <a href="RequestManager.js.html#line455">line 455</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type"><code>Array.&lt;Object></code></span>
-
-
-        </li>
-    </ul>
-
-
-
-
-
-</div>
-
-            
-                
-<div class="section-members">
-<h4 class="name" id="PlayerInfo">PlayerInfo</h4>
-
-
-
-
-<div class="description">
-    Provides info about a player
+    Provides raw data about a player
 </div>
 
 
@@ -729,7 +517,7 @@
             <td class="type">
             
                 
-<span class="param-type"><code><a href="global.html#Profile">Profile</a></code></span>
+<span class="param-type"><code><a href="global.html#profileInfo">profileInfo</a></code></span>
 
 
             
@@ -805,7 +593,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="RequestManager.js.html">RequestManager.js</a>, <a href="RequestManager.js.html#line417">line 417</a>
+        <a href="structures_Profile.js.html">structures/Profile.js</a>, <a href="structures_Profile.js.html#line3">line 3</a>
     </li></ul></dd>
     
 
@@ -837,7 +625,7 @@
             
                 
 <div class="section-members">
-<h4 class="name" id="Profile">Profile</h4>
+<h4 class="name" id="profileInfo">profileInfo</h4>
 
 
 
@@ -1208,7 +996,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="RequestManager.js.html">RequestManager.js</a>, <a href="RequestManager.js.html#line337">line 337</a>
+        <a href="structures_Profile.js.html">structures/Profile.js</a>, <a href="structures_Profile.js.html#line9">line 9</a>
     </li></ul></dd>
     
 
@@ -1240,7 +1028,7 @@
             
                 
 <div class="section-members">
-<h4 class="name" id="ProfileStats">ProfileStats</h4>
+<h4 class="name" id="profileStats">profileStats</h4>
 
 
 
@@ -1686,7 +1474,538 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="RequestManager.js.html">RequestManager.js</a>, <a href="RequestManager.js.html#line63">line 63</a>
+        <a href="structures_Profile.js.html">structures/Profile.js</a>, <a href="structures_Profile.js.html#line25">line 25</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>Object</code></span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+</div>
+
+            
+                
+<div class="section-members">
+<h4 class="name" id="SquadronData">SquadronData</h4>
+
+
+
+
+<div class="description">
+    Provides raw Squadron Data
+</div>
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>name</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>string</code></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The squadron name</td>
+        </tr>
+
+        
+
+    
+
+        <tr>
+            
+                <td class="name"><code>image</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>string</code></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The URL to the squadron's in-game picture</td>
+        </tr>
+
+        
+
+    
+
+        <tr>
+            
+                <td class="name"><code>players</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>Number</code></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The amount of players in the squadron</td>
+        </tr>
+
+        
+
+    
+
+        <tr>
+            
+                <td class="name"><code>description</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>string</code></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The squadron's description</td>
+        </tr>
+
+        
+
+    
+
+        <tr>
+            
+                <td class="name"><code>createdAt</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>string</code></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The date of creation for the squadron</td>
+        </tr>
+
+        
+
+    
+
+        <tr>
+            
+                <td class="name"><code>airKills</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code><a href="global.html#squadronDifficultyStats">squadronDifficultyStats</a></code></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The amount of air targets destroyed per difficulty</td>
+        </tr>
+
+        
+
+    
+
+        <tr>
+            
+                <td class="name"><code>groundKills</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code><a href="global.html#squadronDifficultyStats">squadronDifficultyStats</a></code></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The amount of ground targets destroyed per difficulty</td>
+        </tr>
+
+        
+
+    
+
+        <tr>
+            
+                <td class="name"><code>deaths</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code><a href="global.html#squadronDifficultyStats">squadronDifficultyStats</a></code></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The amount of deaths per difficulty</td>
+        </tr>
+
+        
+
+    
+
+        <tr>
+            
+                <td class="name"><code>flightTime</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code><a href="global.html#squadronDifficultyStats">squadronDifficultyStats</a></code></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The total flight time per difficulty</td>
+        </tr>
+
+        
+
+    
+
+        <tr>
+            
+                <td class="name"><code>members</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>Array.&lt;<a href="global.html#squadronMemberInfo">squadronMemberInfo</a>></code></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Info for each squadron member</td>
+        </tr>
+
+        
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="structures_Squadron.js.html">structures/Squadron.js</a>, <a href="structures_Squadron.js.html#line3">line 3</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>Object</code></span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+</div>
+
+            
+                
+<div class="section-members">
+<h4 class="name" id="squadronDifficultyStats">squadronDifficultyStats</h4>
+
+
+
+
+<div class="description">
+    Provides info per difficulty for a squadron.This is identical to Profile#difficultyInfo, with the difference beingthat Profile#difficultyInfo is for profile statistics (which are objects),and Squadron#squadronDifficultyStats is for strings.
+</div>
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>arcade</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>string</code></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The info for the Arcade gamemode</td>
+        </tr>
+
+        
+
+    
+
+        <tr>
+            
+                <td class="name"><code>realistic</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>string</code></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The info for the Realistic gamemode</td>
+        </tr>
+
+        
+
+    
+
+        <tr>
+            
+                <td class="name"><code>simulator</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>string</code></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The info for the Simulator gamemode</td>
+        </tr>
+
+        
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="structures_Squadron.js.html">structures/Squadron.js</a>, <a href="structures_Squadron.js.html#line25">line 25</a>
     </li></ul></dd>
     
 
@@ -1988,7 +2307,7 @@
             <td class="type">
             
                 
-<span class="param-type"><code><a href="global.html#memberInfo">memberInfo</a></code></span>
+<span class="param-type"><code>memberInfo</code></span>
 
 
             
@@ -2039,7 +2358,210 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line48">line 48</a>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line51">line 51</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>Object</code></span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+</div>
+
+            
+                
+<div class="section-members">
+<h4 class="name" id="squadronMemberInfo">squadronMemberInfo</h4>
+
+
+
+
+<div class="description">
+    Provides info about Squadron members
+</div>
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>name</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>string</code></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The in-game name of the squadron member</td>
+        </tr>
+
+        
+
+    
+
+        <tr>
+            
+                <td class="name"><code>rating</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code><a href="global.html#squadronDifficultyStats">squadronDifficultyStats</a></code></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The rating for the squadron member, per difficulty</td>
+        </tr>
+
+        
+
+    
+
+        <tr>
+            
+                <td class="name"><code>role</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>string</code></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The squadron member's role</td>
+        </tr>
+
+        
+
+    
+
+        <tr>
+            
+                <td class="name"><code>entry</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>string</code></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The date of entry for the squadron member</td>
+        </tr>
+
+        
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="structures_Squadron.js.html">structures/Squadron.js</a>, <a href="structures_Squadron.js.html#line17">line 17</a>
     </li></ul></dd>
     
 
@@ -2084,7 +2606,7 @@
 <br class="clear">
 
 <footer>
-    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Fri Jan 19 2018 15:57:12 GMT+0100 (West-Europa (standaardtijd)) using the Minami theme.
+    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Sat Jan 20 2018 11:23:25 GMT+0100 (West-Europa (standaardtijd)) using the Minami theme.
 </footer>
 
 <script>prettyPrint();</script>

@@ -4,7 +4,7 @@
   "description": "Easily get data from War Thunder without having to write huge chunks of code",
   "main": "src/index.js",
   "scripts": {
-    "test": "npm run lint",
+    "test": "npm run lint && npm run lint:typings",
     "lint": "./node_modules/.bin/eslint ./src",
     "docs": "jsdoc src -r -c jsdoc.json -d ./docs -R README.md -t node_modules/minami",
     "lint:typings": "tslint ./typings/index.d.ts"
@@ -39,6 +39,7 @@
     "jsdoc-strip-async-await": "^0.1.0",
     "minami": "^1.2.3",
     "tslint": "^5.9.1",
+    "tslint-config-typings": "^0.3.1",
     "typescript": "^2.6.2"
   }
 }
