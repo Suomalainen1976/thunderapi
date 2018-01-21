@@ -31,300 +31,24 @@ declare module thunderapi {
     private readonly version: string;
     private readonly USER_AGENT: string;
 
-    private get(key: string, name: string): Promise<{
-      profile: {
-        image: string;
-        nick: string;
-        title: string;
-        squadron: string;
-        level: number;
-        registered: string;
-        usa: {
-          vehicles: number;
-          elite: number;
-          medals: number;
-        };
-        ussr: {
-          vehicles: number;
-          elite: number;
-          medals: number;
-        };
-        britain: {
-          vehicles: number;
-          elite: number;
-          medals: number;
-        };
-        germany: {
-          vehicles: number;
-          elite: number;
-          medals: number;
-        };
-        japan: {
-          vehicles: number;
-          elite: number;
-          medals: number;
-        };
-        italy: {
-          vehicles: number;
-          elite: number;
-          medals: number;
-        };
-      };
-      stats: {
-        arcade: {
-          victories: number;
-          completed: number;
-          ratio: string;
-          sessions: number;
-          deaths: number;
-          fighter: string;
-          bomber: string;
-          attacker: string;
-          tank: string;
-          tankdestroyer: string;
-          heavytank: string;
-          spaa: string;
-          airkills: number;
-          groundkills: number;
-          battletime: string;
-        };
-        realistic: {
-          victories: number;
-          completed: number;
-          ratio: string;
-          sessions: number;
-          deaths: number;
-          fighter: string;
-          bomber: string;
-          attacker: string;
-          tank: string;
-          tankdestroyer: string;
-          heavytank: string;
-          spaa: string;
-          airkills: number;
-          groundkills: number;
-          battletime: string;
-        };
-        simulator: {
-          victories: number;
-          completed: number;
-          ratio: string;
-          sessions: number;
-          deaths: number;
-          fighter: string;
-          bomber: string;
-          attacker: string;
-          tank: string;
-          tankdestroyer: string;
-          heavytank: string;
-          spaa: string;
-          airkills: number;
-          groundkills: number;
-          battletime: string;
-        };
-      }
-    } | {
-      name: string;
-      image: string;
-      players: number;
-      description: string;
-      createdAt: string;
-      airKills: {
-        arcade: string;
-        realistic: string;
-        simulator: string;
-      };
-      groundKills: {
-        arcade: string;
-        realistic: string;
-        simulator: string;
-      };
-      deaths: {
-        arcade: string;
-        realistic: string;
-        simulator: string;
-      };
-      flightTime: {
-        arcade: string;
-        realistic: string;
-        simulator: string;
-      };
-      members: {
-        name: string;
-        rating: {
-          arcade: string;
-          realistic: string;
-          simulator: string;
-        };
-        role: string;
-        entry: string;
-      }[];
-    }>;
+    private get(key: string, name: string): Promise<ProfileInfo|SquadronData>;
   }
 
   export class Profile {
-    public constructor(data: {
-      profile: {
-        image: string;
-        nick: string;
-        title: string;
-        squadron: string;
-        level: number;
-        registered: string;
-        usa: {
-          vehicles: number;
-          elite: number;
-          medals: number;
-        };
-        ussr: {
-          vehicles: number;
-          elite: number;
-          medals: number;
-        };
-        britain: {
-          vehicles: number;
-          elite: number;
-          medals: number;
-        };
-        germany: {
-          vehicles: number;
-          elite: number;
-          medals: number;
-        };
-        japan: {
-          vehicles: number;
-          elite: number;
-          medals: number;
-        };
-        italy: {
-          vehicles: number;
-          elite: number;
-          medals: number;
-        };
-      };
-      stats: {
-        arcade: {
-          victories: number;
-          completed: number;
-          ratio: string;
-          sessions: number;
-          deaths: number;
-          fighter: string;
-          bomber: string;
-          attacker: string;
-          tank: string;
-          tankdestroyer: string;
-          heavytank: string;
-          spaa: string;
-          airkills: number;
-          groundkills: number;
-          battletime: string;
-        };
-        realistic: {
-          victories: number;
-          completed: number;
-          ratio: string;
-          sessions: number;
-          deaths: number;
-          fighter: string;
-          bomber: string;
-          attacker: string;
-          tank: string;
-          tankdestroyer: string;
-          heavytank: string;
-          spaa: string;
-          airkills: number;
-          groundkills: number;
-          battletime: string;
-        };
-        simulator: {
-          victories: number;
-          completed: number;
-          ratio: string;
-          sessions: number;
-          deaths: number;
-          fighter: string;
-          bomber: string;
-          attacker: string;
-          tank: string;
-          tankdestroyer: string;
-          heavytank: string;
-          spaa: string;
-          airkills: number;
-          groundkills: number;
-          battletime: string;
-        };
-      }
-    });
+    public constructor(data: PlayerData);
 
-    public readonly stats: Map<string, {
-      victories: number;
-      completed: number;
-      ratio: string;
-      sessions: number;
-      deaths: number;
-      fighter: string;
-      bomber: string;
-      attacker: string;
-      tank: string;
-      tankdestroyer: string;
-      heavytank: string;
-      spaa: string;
-      airkills: number;
-      groundkills: number;
-      battletime: string;
-    }>;
+    public readonly stats: Map<string, ProfileStats>;
     public readonly image: string;
     public readonly nick: string;
     public readonly level: number;
     public readonly registered: string;
-    public readonly countries: Map<string, {
-      vehicles: number;
-      elite: number;
-      medals: number;
-    }>;
+    public readonly countries: Map<string, CountryInfo>;
     public readonly squadron: string;
     public readonly title: string;
   }
 
   export class Squadron {
-    public constructor(data: {
-      name: string;
-      image: string;
-      players: number;
-      description: string;
-      createdAt: string;
-      airKills: {
-        arcade: string;
-        realistic: string;
-        simulator: string;
-      };
-      groundKills: {
-        arcade: string;
-        realistic: string;
-        simulator: string;
-      };
-      deaths: {
-        arcade: string;
-        realistic: string;
-        simulator: string;
-      };
-      flightTime: {
-        arcade: string;
-        realistic: string;
-        simulator: string;
-      };
-      members: {
-        name: string;
-        rating: {
-          arcade: string;
-          realistic: string;
-          simulator: string;
-        };
-        role: string;
-        entry: string;
-      }[];
-    });
+    public constructor(data: SquadronData);
 
     public readonly name: string;
     public readonly image: string;
@@ -336,42 +60,83 @@ declare module thunderapi {
     public readonly deaths: Map<string, string>;
     public readonly flighttime: Map<string, string>;
 
-    public members: Map<string, {
-      name: string;
-      rating: {
-        arcade: string;
-        realistic: string;
-        simulator: string;
-      };
-      role: string;
-      entry: string;
-    }>;
+    public members: Map<string, MemberInfo>;
   }
 
   // Types
-  export type SquadronInfo = {
+  export type SquadronData = {
     name: string;
     image: string;
     players: number;
     description: string;
     createdAt: string;
-    airKills: SquadronDifficultyInfo;
-    groundKills: SquadronDifficultyInfo;
-    deaths: SquadronDifficultyInfo;
-    flightTime: SquadronDifficultyInfo;
+    airKills: SquadronDifficultyStats;
+    groundKills: SquadronDifficultyStats;
+    deaths: SquadronDifficultyStats;
+    flightTime: SquadronDifficultyStats;
     members: MemberInfo[];
   }
 
   export type MemberInfo = {
     name: string;
-    rating: SquadronDifficultyInfo;
+    rating: SquadronDifficultyStats;
     role: string;
     entry: string;
   }
 
-  export type SquadronDifficultyInfo = {
+  export type SquadronDifficultyStats = {
     arcade: string;
     realistic: string;
     simulator: string;
+  }
+
+  export type CountryInfo = {
+    vehicles: number;
+    elite: number;
+    medals: number;
+  }
+
+  export type PlayerData = {
+    profile: ProfileInfo;
+    stats: DifficultyInfo;
+  }
+
+  export type ProfileInfo = {
+    image: string;
+    nick: string;
+    title: string;
+    squadron: string;
+    level: number;
+    registered: string;
+    usa: CountryInfo;
+    ussr: CountryInfo;
+    britain: CountryInfo;
+    germany: CountryInfo;
+    japan: CountryInfo;
+    italy: CountryInfo;
+  }
+
+  export type DifficultyInfo = {
+    arcade: ProfileStats;
+    realistic: ProfileStats;
+    simulator: ProfileStats;
+  }
+
+  export type ProfileStats = {
+    victories: number;
+    completed: number;
+    ratio: string;
+    sessions: number;
+    deaths: number;
+    fighter: string;
+    bomber: string;
+    attacker: string;
+    tank: string;
+    tankdestroyer: string;
+    heavytank: string;
+    spaa: string;
+    airkills: number;
+    groundkills: number;
+    battletime: string;
   }
 }

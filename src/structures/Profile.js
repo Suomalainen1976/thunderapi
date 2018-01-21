@@ -62,7 +62,7 @@ class Profile {
   constructor(data) {
     /**
      * The player's statistics
-     * @type {Map<string, DifficultyInfo>}
+     * @type {Map<string, ProfileStats>}
      * @readonly
      */
     this.stats = new Map();
