@@ -80,21 +80,6 @@ class ThunderApi {
   }
 
   /**
-   * Provides squadron information
-   * @typedef {Object} SquadronInfo
-   * @property {string} name The name of the player
-   * @property {string} image The link to the player's avatar
-   * @property {string} description The squadron's description
-   * @property {number} players The amount of players in the squadron
-   * @property {string} createdAt The date when this squadron was created
-   * @property {difficultyInfo} airKills The amount of air targets destroyed for all three difficulties
-   * @property {difficultyInfo} groundKills The amount of ground targets destroyed for all three difficulties
-   * @property {difficultyInfo} deaths The amount of deaths for all three difficulties
-   * @property {difficultyInfo} flightTime The total flight time for all three difficulties
-   * @property {memberInfo} members Data for each squadron member
-   */
-
-  /**
    * Get's info about a squadron.
    * <note>You must provide the <strong>full</strong> name of the squadron,
    * e.g. "35th Gopnik nation battle group" instead of

@@ -27,6 +27,7 @@
     "url": "https://github.com/devdutchy/thunderapi/issues"
   },
   "homepage": "https://github.com/devdutchy/thunderapi#readme",
+  "types": "typings/index.d.ts",
   "dependencies": {
     "common-tags": "^1.7.2",
     "jsdoc": "^3.5.5",
@@ -34,6 +35,7 @@
     "snekfetch": "^3.6.1"
   },
   "devDependencies": {
+    "@types/node": "^9.3.0",
     "eslint": "^4.15.0",
     "eslint-config-aqua": "^2.0.1",
     "jsdoc-strip-async-await": "^0.1.0",

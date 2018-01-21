@@ -1,4 +1,4 @@
-declare namespace thunderapi {
+declare module thunderapi {
 
   export const version: string;
 
@@ -8,17 +8,17 @@ declare namespace thunderapi {
     private readonly requestManager: RequestManager;
     private readonly cacheSweepInterval: number;
     private cache: Map<string, Profile | Squadron>;
-    private _intervals: NodeJS.Timer[];
+    private _intervals: any[];
 
     public getPlayer(
       player: string,
-      getFromCache?: boolean = true,
-      shouldCache?: boolean = true
+      getFromCache?: boolean,
+      shouldCache?: boolean
     ): Promise<Profile>;
     public getSquadron(
       name: string,
-      getFromCache?: boolean = true,
-      shouldCache?: boolean = true
+      getFromCache?: boolean,
+      shouldCache?: boolean
     ): Promise<Squadron>;
     public raw(key: string, name: string): Promise<object>;
   }
@@ -346,5 +346,32 @@ declare namespace thunderapi {
       role: string;
       entry: string;
     }>;
+  }
+
+  // Types
+  export type SquadronInfo = {
+    name: string;
+    image: string;
+    players: number;
+    description: string;
+    createdAt: string;
+    airKills: SquadronDifficultyInfo;
+    groundKills: SquadronDifficultyInfo;
+    deaths: SquadronDifficultyInfo;
+    flightTime: SquadronDifficultyInfo;
+    members: MemberInfo[];
+  }
+
+  export type MemberInfo = {
+    name: string;
+    rating: SquadronDifficultyInfo;
+    role: string;
+    entry: string;
+  }
+
+  export type SquadronDifficultyInfo = {
+    arcade: string;
+    realistic: string;
+    simulator: string;
   }
 }

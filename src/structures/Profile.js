@@ -3,28 +3,28 @@ class Profile {
   /**
    * Provides raw data about a player
    * @typedef {Object} PlayerData
-   * @property {profileInfo} profile The player's profile
-   * @property {difficultyInfo} stats Game statistics for the player
+   * @property {ProfileInfo} profile The player's profile
+   * @property {DifficultyInfo} stats Game statistics for the player
    */
   /**
    * Provides statistics about a user's profile
-   * @typedef {Object} profileInfo
+   * @typedef {Object} ProfileInfo
    * @property {string} image The URL to the player's in-game avatar
    * @property {string} nick The player's in-game name
    * @property {string} title The player's title, if he has one
    * @property {string} squadron The player's squadron, if he's in one
    * @property {number} level The player's in-game experience level
    * @property {string} registered The date when the player registered
-   * @property {countryInfo} usa Statistics for the USA
-   * @property {countryInfo} ussr Statistics for the USSR
-   * @property {countryInfo} britain Statistics for Great Britain
-   * @property {countryInfo} germany Statistics for Germany
-   * @property {countryInfo} japan Statistics for Japan
-   * @property {countryInfo} italy Statistics for Italy
+   * @property {CountryInfo} usa Statistics for the USA
+   * @property {CountryInfo} ussr Statistics for the USSR
+   * @property {CountryInfo} britain Statistics for Great Britain
+   * @property {CountryInfo} germany Statistics for Germany
+   * @property {CountryInfo} japan Statistics for Japan
+   * @property {CountryInfo} italy Statistics for Italy
    */
   /**
    * Provides game statistics about a player
-   * @typedef {Object} profileStats
+   * @typedef {Object} ProfileStats
    * @property {string} victories The amount of victories
    * @property {string} completed The amount of completed battles
    * @property {string} ratio The victory/battle ratio
@@ -43,17 +43,17 @@ class Profile {
    */
   /**
    * Provides info about a nation for a player's profile
-   * @typedef {Object} countryInfo
+   * @typedef {Object} CountryInfo
    * @property {number} vehicles The amount of total vehicles
    * @property {number} elite The amount of elite (fully researched) vehicles
    * @property {number} medals The amount of medals for the country
    */
   /**
    * Provides info for all three gamemodes
-   * @typedef {Object} difficultyInfo
-   * @property {profileStats} arcade The info for the Arcade gamemode
-   * @property {profileStats} realistic The info for the Realistic gamemode
-   * @property {profileStats} simulator The info for the Simulator gamemode
+   * @typedef {Object} DifficultyInfo
+   * @property {ProfileStats} arcade The info for the Arcade gamemode
+   * @property {ProfileStats} realistic The info for the Realistic gamemode
+   * @property {ProfileStats} simulator The info for the Simulator gamemode
    */
   /**
    * Creates a new Profile
@@ -62,7 +62,7 @@ class Profile {
   constructor(data) {
     /**
      * The player's statistics
-     * @type {Map<string, difficultyInfo>}
+     * @type {Map<string, DifficultyInfo>}
      * @readonly
      */
     this.stats = new Map();
@@ -100,7 +100,7 @@ class Profile {
 
     /**
      * Per-country info for the player
-     * @type {Map<string,countryInfo>}
+     * @type {Map<string,CountryInfo>}
      * @readonly
      */
     this.countries = new Map();

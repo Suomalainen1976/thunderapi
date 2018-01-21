@@ -5,9 +5,10 @@
         "noImplicitAny": true,
         "strictNullChecks": true,
         "noEmit": true,
-        "forceConsistentCasingInFileNames": true
+        "forceConsistentCasingInFileNames": true,
+        "types": ["node"]
     },
     "files": [
-        "index.d.ts"
+        "./typings/index.d.ts"
     ]
 }

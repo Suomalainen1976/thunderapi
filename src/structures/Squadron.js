@@ -8,17 +8,17 @@ class Squadron {
    * @property {Number} players The amount of players in the squadron
    * @property {string} description The squadron's description
    * @property {string} createdAt The date of creation for the squadron
-   * @property {squadronDifficultyStats} airKills The amount of air targets destroyed per difficulty
-   * @property {squadronDifficultyStats} groundKills The amount of ground targets destroyed per difficulty
-   * @property {squadronDifficultyStats} deaths The amount of deaths per difficulty
-   * @property {squadronDifficultyStats} flightTime The total flight time per difficulty
-   * @property {squadronMemberInfo[]} members Info for each squadron member
+   * @property {SquadronDifficultyStats} airKills The amount of air targets destroyed per difficulty
+   * @property {SquadronDifficultyStats} groundKills The amount of ground targets destroyed per difficulty
+   * @property {SquadronDifficultyStats} deaths The amount of deaths per difficulty
+   * @property {SquadronDifficultyStats} flightTime The total flight time per difficulty
+   * @property {SquadronMemberInfo[]} members Info for each squadron member
    */
   /**
    * Provides info about Squadron members
-   * @typedef {Object} squadronMemberInfo
+   * @typedef {Object} SquadronMemberInfo
    * @property {string} name The in-game name of the squadron member
-   * @property {squadronDifficultyStats} rating The rating for the squadron member, per difficulty
+   * @property {SquadronDifficultyStats} rating The rating for the squadron member, per difficulty
    * @property {string} role The squadron member's role
    * @property {string} entry The date of entry for the squadron member
    */
@@ -26,8 +26,8 @@ class Squadron {
    * Provides info per difficulty for a squadron.
    * This is identical to Profile#difficultyInfo, with the difference being
    * that Profile#difficultyInfo is for profile statistics (which are objects),
-   * and Squadron#squadronDifficultyStats is for strings.
-   * @typedef {Object} squadronDifficultyStats
+   * and Squadron#SquadronDifficultyStats is for strings.
+   * @typedef {Object} SquadronDifficultyStats
    * @property {string} arcade The info for the Arcade gamemode
    * @property {string} realistic The info for the Realistic gamemode
    * @property {string} simulator The info for the Simulator gamemode
@@ -74,7 +74,7 @@ class Squadron {
 
     /**
      * The amount of air targets destroyed, mapped by gamemode
-     * @type {Map<string,squadronDifficultyStats>}
+     * @type {Map<string,SquadronDifficultyStats>}
      * @readonly
      */
     this.airkills = new Map();
@@ -84,7 +84,7 @@ class Squadron {
 
     /**
      * The amount of ground targets destroyed, mapped by gamemode
-     * @type {Map<string,squadronDifficultyStats>}
+     * @type {Map<string,SquadronDifficultyStats>}
      * @readonly
      */
     this.groundkills = new Map();
@@ -94,7 +94,7 @@ class Squadron {
 
     /**
      * The amount of deaths, mapped by gamemode
-     * @type {Map<string,squadronDifficultyStats>}
+     * @type {Map<string,SquadronDifficultyStats>}
      * @readonly
      */
     this.deaths = new Map();
@@ -104,7 +104,7 @@ class Squadron {
 
     /**
      * The total battle time, mapped by gamemode
-     * @type {Map<string,squadronDifficultyStats>}
+     * @type {Map<string,SquadronDifficultyStats>}
      * @readonly
      */
     this.flighttime = new Map();
@@ -114,7 +114,7 @@ class Squadron {
 
     /**
      * Get the amount of members, mapped by name
-     * @return {Map<string,squadronMemberInfo>}
+     * @return {Map<string,SquadronMemberInfo>}
      */
     this.members = new Map();
     for (const member of data.members) this.members.set(member.name, member);

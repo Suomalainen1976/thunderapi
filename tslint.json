@@ -11,7 +11,7 @@
       "indent": [
           true,
           "spaces",
-          4
+          2
       ],
       "no-duplicate-variable": true,
       "no-unused-variable": [false],
@@ -27,7 +27,7 @@
       ],
       "quotemark": [
           true,
-          "single"
+          "double"
       ],
       "semicolon": [
           true,
