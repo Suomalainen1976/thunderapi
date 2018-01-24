@@ -67,6 +67,7 @@ class ThunderApi {
    */
   getPlayer(player, getFromCache = true, shouldCache = true) {
     return new Promise(async (resolve, reject) => {
+      if (typeof name !== "string") reject(new TypeError("Player name should be a string"));
       if (this.cache.has(player) && getFromCache) {
         const profile = this.cache.get(player);
         resolve(profile);
@@ -102,6 +103,7 @@ class ThunderApi {
    */
   getSquadron(name, getFromCache = true, shouldCache = true) {
     return new Promise(async (resolve, reject) => {
+      if (typeof name !== "string") reject(new TypeError("Squadron name should be a string"));
       if (this.cache.has(name) && getFromCache) {
         const squadron = this.cache.get(name);
         resolve(squadron);
@@ -115,10 +117,38 @@ class ThunderApi {
   }
 
   /**
+   * Returns an array of news objects
+   * @param {number} page The page number of the news page
+   * @return {Promise<NewsInfo[]>}
+   */
+  getNews(page = 1) {
+    return new Promise(async (resolve, reject) => {
+      if (isNaN(page)) reject(new TypeError("Provided page is not int"));
+      const data = await this.requestManager.get("news", page);
+      if (data.error) reject(new Error(data.error));
+      resolve(data);
+    });
+  }
+
+  /**
+   * Returns an array of changelog objects
+   * @param {number} page The page number of the changelogs
+   * @return {Promise<NewsInfo[]>}
+   */
+  getUpdates(page = 1) {
+    return new Promise(async (resolve, reject) => {
+      if (isNaN(page)) reject(new TypeError("Provided page is not int"));
+      const data = await this.requestManager.get("changelog", page);
+      if (data.error) reject(new Error(data.error));
+      resolve(data);
+    });
+  }
+
+  /**
    * Get raw data
-   * @param {string} key The raw data to get, either squadron or profile
+   * @param {string} key The raw data to get, either squadron, profile, news or changelog
    * @param {string} name The name of the squadron/player to get raw data from
-   * @return {Promise<PlayerData|SquadronData>}
+   * @return {Promise<PlayerData|SquadronData|NewsInfo[]>}
    */
   raw(key, name) {
     return new Promise(async (resolve, reject) => {
@@ -130,6 +160,7 @@ class ThunderApi {
 
   /**
    * Clears all the intervals
+   * @return {void}
    * @private
    */
   _clearIntervals() {
@@ -137,6 +168,14 @@ class ThunderApi {
       clearInterval(interval);
       this._intervals.splice(this._intervals.indexOf(interval), 1);
     }
+  }
+
+  /**
+   * Sweeps the cache
+   * @return {void}
+   */
+  sweepCache() {
+    this.cache.clear();
   }
 }
 

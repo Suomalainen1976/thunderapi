@@ -36,15 +36,15 @@ class RequestManager {
   /**
    * Get raw data from War Thunder
    * @param {string} key The key to search on, either `profile` or `squadron`
-   * @param {string} name The name of the player/squadron
-   * @return {Promise<SquadronInfo|PlayerInfo>}
+   * @param {any[]} args The arguments, e.g. the player/squadron name or the page number for news/updates
+   * @return {Promise<SquadronInfo|PlayerInfo|NewsInfo[]>}
    * @private
    */
-  async get(key, name) { // eslint-disable-line complexity
+  async get(key, ...args) { // eslint-disable-line complexity
     let data = {};
     if (key.toLowerCase() === "profile") {
       const res = await request
-        .get(`https://warthunder.com/en/community/userinfo/?nick=${name}`)
+        .get(`https://warthunder.com/en/community/userinfo/?nick=${args.join(" ")}`)
         .set({ "User-Agent": this.USER_AGENT });
 
       if (res.status !== 200) {
@@ -60,7 +60,10 @@ class RequestManager {
       const userinfo = document.getElementsByClassName("userinfo")[0];
       const userstats = document.getElementsByClassName("user-stat")[0];
 
-      if (!userinfo || !userstats) return null;
+      if (!userinfo || !userstats) {
+        data.error = "Player not found";
+        return data;
+      }
 
       const stats = {
         arcade: {
@@ -312,7 +315,7 @@ class RequestManager {
       };
       const profile = {
         image: userinfo.children[0].children[0].children[0].children[0].children[0].src,
-        nick: name,
+        nick: args.join(" "),
         title: userinfo.children[0].children[0].children[0].children[0].children[2].innerHTML.replace("<br>", ""),
         squadron: userinfo.children[0].children[0].children[0].children[0].children[3].children[0].innerHTML !== ""
           ? userinfo.children[0].children[0].children[0].children[0].children[3].children[0].innerHTML
@@ -373,7 +376,7 @@ class RequestManager {
       return data;
     } else if (key.toLowerCase() === "squadron") {
       const res = await request
-        .get(`https://warthunder.com/en/community/claninfo/${name}`)
+        .get(`https://warthunder.com/en/community/claninfo/${args.join(" ")}`)
         .set({ "User-Agent": this.USER_AGENT });
 
       if (res.status !== 200) {
@@ -446,6 +449,83 @@ class RequestManager {
         members
       };
       return data;
+    } else if (key === "news") {
+      const res = await request
+        .get(`https://warthunder.com/en/news/page/${args.length && !isNaN(parseInt(args[0])) ? parseInt(args[0]) : "1"}`)
+        .set({ "User-Agent": this.USER_AGENT });
+
+      if (res.status !== 200) {
+        if (res.status === 404) {
+          data.error = "Not found";
+          return data;
+        }
+        data.error = `Server responded with code ${res.status}`;
+        return data;
+      }
+      const { window: { document } } = new JSDOM(res.text);
+
+      const elements = document.getElementsByClassName("news-item__anons");
+
+      if (!elements.length) {
+        data.error = "Not found";
+        return data;
+      }
+      const _data = [];
+      for (const element of elements) {
+        const data_ = {
+          /**
+           * Provides info for news and changelogs
+           * @typedef {Object} NewsInfo
+           * @property {string} url The URL to the news/changelog page
+           * @property {string} title The title of the news/update
+           * @property {string} date The date the news was announced/the update was released
+           * @property {number} comments The amount of comments. If comments are not available, comments will be 0
+           */
+          url: element.children[0].href,
+          title: element.children[0].innerHTML,
+          text: element.children[2].children[0].innerHTML.trim(),
+          date: element.children[3].children[0].children[0].className === "date"
+            ? element.children[3].children[0].children[0].innerHTML
+            : element.children[3].children[0].children[1].innerHTML,
+          comments: element.children[3].children[0].children[0].className.trim().includes("comment-count")
+            ? parseInt(element.children[3].children[0].children[0].innerHTML)
+            : 0
+        };
+        _data.push(data_);
+      }
+      return _data;
+    } else if (key === "changelog") {
+      const res = await request
+        .get(`https://warthunder.com/en/game/changelog/page${args.length && !isNaN(parseInt(args[0])) ? parseInt(args[0]) : "1"}`)
+        .set({ "User-Agent": this.USER_AGENT });
+
+      if (res.status !== 200) {
+        if (res.status === 404) {
+          data.error = "Not found";
+          return data;
+        }
+        data.error = `Server responded with code ${res.status}`;
+        return data;
+      }
+      const { window: { document } } = new JSDOM(res.text);
+
+      const elements = document.getElementsByClassName("news-item__anons");
+
+      if (!elements.length) {
+        data.error = "Not found";
+        return data;
+      }
+      const _data = [];
+      for (const element of elements) {
+        const data_ = {
+          url: element.children[1].href,
+          title: element.children[1].innerHTML,
+          text: element.children[3].children[0].innerHTML.trim(),
+          date: element.children[0].innerHTML
+        };
+        _data.push(data_);
+      }
+      return _data;
     } else {
       data.error = "Invalid option specified";
       return data;

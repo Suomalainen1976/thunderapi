@@ -32,7 +32,7 @@
 
 ## About
 
-ThunderAPI is a simple, promise-based wrapper on the War Thunder site to fetch all kinds of data, including player and squadroninfo. Additionally, it makes full use of ES2017's async/await functionality for clear, concise code that is simple to write and easy to comprehend.
+ThunderAPI is a simple, promise-based data scraper for the War Thunder site to get all kinds of data, including player and squadron info. Additionally, it makes full use of ES2017's async/await functionality for clear, concise code that is simple to write and easy to comprehend.
 
 ## Features
 
