@@ -28,7 +28,7 @@
 
 # ThunderAPI
 
-> A node.js wrapper to get profile and squadron data from War Thunder
+> A node.js scraper to get profile and squadron data from War Thunder
 
 ## About
 
@@ -38,9 +38,6 @@ ThunderAPI is a simple, promise-based data scraper for the War Thunder site to g
 
 - Fetching player info
 - Fetching squadron info
-
-## Coming soon
-
 - Getting news info
 - Getting update info
 
