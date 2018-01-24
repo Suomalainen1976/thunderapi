@@ -10,6 +10,8 @@ declare module thunderapi {
     private cache: Map<string, Profile | Squadron>;
     private _intervals: any[];
 
+    private _clearIntervals(): void;
+
     public getPlayer(
       player: string,
       getFromCache?: boolean,
@@ -20,7 +22,10 @@ declare module thunderapi {
       getFromCache?: boolean,
       shouldCache?: boolean
     ): Promise<Squadron>;
+    public getNews(page?: number): Promise<NewsInfo>;
+    public getUpdates(page?: number): Promise<NewsInfo>;
     public raw(key: string, name: string): Promise<object>;
+    public sweepCache(): void;
   }
 
   export class RequestManager {
@@ -31,7 +36,7 @@ declare module thunderapi {
     private readonly version: string;
     private readonly USER_AGENT: string;
 
-    private get(key: string, name: string): Promise<ProfileInfo|SquadronData>;
+    private get(key: string, ...args: any[]): Promise<ProfileInfo|SquadronData|NewsInfo>;
   }
 
   export class Profile {
@@ -138,5 +143,13 @@ declare module thunderapi {
     airkills: number;
     groundkills: number;
     battletime: string;
+  }
+
+  export type NewsInfo = {
+    url: string;
+    title: string;
+    text: string;
+    date: string;
+    comments: number;
   }
 }

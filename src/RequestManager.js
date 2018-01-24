@@ -521,7 +521,8 @@ class RequestManager {
           url: element.children[1].href,
           title: element.children[1].innerHTML,
           text: element.children[3].children[0].innerHTML.trim(),
-          date: element.children[0].innerHTML
+          date: element.children[0].innerHTML,
+          comments: 0
         };
         _data.push(data_);
       }
