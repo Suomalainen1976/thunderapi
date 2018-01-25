@@ -30,7 +30,6 @@
   "homepage": "https://github.com/devdutchy/thunderapi#readme",
   "dependencies": {
     "common-tags": "^1.7.2",
-    "jsdoc": "^3.5.5",
     "jsdom": "^11.5.1",
     "snekfetch": "^3.6.1"
   },
@@ -38,6 +37,7 @@
     "@types/node": "^9.3.0",
     "eslint": "^4.15.0",
     "eslint-config-aqua": "^2.0.1",
+    "jsdoc": "^3.5.5",
     "jsdoc-strip-async-await": "^0.1.0",
     "minami": "^1.2.3",
     "tslint": "^5.9.1",
