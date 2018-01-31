@@ -1,6 +1,5 @@
 const request = require("snekfetch");
 const { JSDOM } = require("jsdom");
-const { oneLine } = require("common-tags");
 
 /**
  * Request manager for ThunderApi
@@ -29,9 +28,7 @@ class RequestManager {
      * @private
      * @readonly
      */
-    this.USER_AGENT = oneLine`
-      ThunderAPI v${this.version} by devdutchy (https://github.com/devdutchy/thunderapi) being used by ${userAgent}
-    `;
+    this.USER_AGENT = `ThunderAPI v${this.version} by devdutchy (https://github.com/devdutchy/thunderapi) being used by ${userAgent}`;
   }
   /**
    * Get raw data from War Thunder
@@ -451,7 +448,7 @@ class RequestManager {
       return data;
     } else if (key === "news") {
       const res = await request
-        .get(`https://warthunder.com/en/news/page/${args.length && !isNaN(parseInt(args[0])) ? parseInt(args[0]) : "1"}`)
+        .get(`https://warthunder.com/en/news/page/${args.length && !isNaN(parseInt(args[0])) ? parseInt(args[0]) : 1}`)
         .set({ "User-Agent": this.USER_AGENT });
 
       if (res.status !== 200) {
@@ -496,7 +493,7 @@ class RequestManager {
       return _data;
     } else if (key === "changelog") {
       const res = await request
-        .get(`https://warthunder.com/en/game/changelog/page${args.length && !isNaN(parseInt(args[0])) ? parseInt(args[0]) : "1"}`)
+        .get(`https://warthunder.com/en/game/changelog/page/${args.length && !isNaN(parseInt(args[0])) ? parseInt(args[0]) : 1}`)
         .set({ "User-Agent": this.USER_AGENT });
 
       if (res.status !== 200) {

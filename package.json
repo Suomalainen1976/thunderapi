@@ -29,7 +29,6 @@
   },
   "homepage": "https://github.com/devdutchy/thunderapi#readme",
   "dependencies": {
-    "common-tags": "^1.7.2",
     "jsdom": "^11.5.1",
     "snekfetch": "^3.6.1"
   },

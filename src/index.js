@@ -7,7 +7,7 @@ class ThunderApi {
   /**
    * Creates a new ThunderAPI class
    * @param {string} userAgent The useragent to use
-   * @param {number} cacheSweepInterval The timeout in milliseconds to sweep the cache, default being 180000 milliseconds
+   * @param {number} [cacheSweepInterval=180000] The timeout in milliseconds to sweep the cache, default being 180000 milliseconds
    */
   constructor(userAgent, cacheSweepInterval = 180000) {
     /**
@@ -51,8 +51,8 @@ class ThunderApi {
   /**
    * Get a player's profile
    * @param {string} player The profile of the player to fetch
-   * @param {boolean?} getFromCache If it should get the player from the cache. Defaults to true
-   * @param {boolean?} shouldCache If it should cache the profile. Defaults to true
+   * @param {boolean} [getFromCache=true] If it should get the player from the cache. Defaults to true
+   * @param {boolean} [shouldCache=true] If it should cache the profile. Defaults to true
    * @return {Promise<Profile>}
    * @example
    * // The following example gets the profile of the player
@@ -86,8 +86,8 @@ class ThunderApi {
    * e.g. "35th Gopnik nation battle group" instead of
    * "GOPNK".</note>
    * @param {string} name The **full** name of the squadron
-   * @param {boolean?} getFromCache If it should get the squadron from the cache, if cached. Defaults to true
-   * @param {boolean?} shouldCache If it should cache the squadron. Defaults to true
+   * @param {boolean} [getFromCache=true] If it should get the squadron from the cache, if cached. Defaults to true
+   * @param {boolean} [shouldCache=true] If it should cache the squadron. Defaults to true
    * @return {Promise<Squadron>}
    * @example
    * // The following example gets info about
@@ -118,7 +118,7 @@ class ThunderApi {
 
   /**
    * Returns an array of news objects
-   * @param {number} page The page number of the news page
+   * @param {number} [page=1] The page number of the news page
    * @return {Promise<NewsInfo[]>}
    */
   getNews(page = 1) {
@@ -132,7 +132,7 @@ class ThunderApi {
 
   /**
    * Returns an array of changelog objects
-   * @param {number} page The page number of the changelogs
+   * @param {number} [page=1] The page number of the changelogs
    * @return {Promise<NewsInfo[]>}
    */
   getUpdates(page = 1) {
