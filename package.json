@@ -1,6 +1,6 @@
 {
   "name": "thunderapi",
-  "version": "0.2.3",
+  "version": "0.3.0",
   "description": "Easily get data from War Thunder without having to write huge chunks of code",
   "main": "./src/index.js",
   "types": "./typings/index.d.ts",
