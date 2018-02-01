@@ -8,7 +8,9 @@
     "test": "npm run lint",
     "lint": "./node_modules/.bin/eslint ./src",
     "docs": "jsdoc src -r -c jsdoc.json -d ./docs -R README.md -t node_modules/minami",
-    "lint:typings": "tslint ./typings/index.d.ts"
+    "lint:typings": "tslint ./typings/index.d.ts",
+    "webpack": "parallel-webpack",
+    "browserify": "browserify "
   },
   "repository": {
     "type": "git",
@@ -37,10 +39,14 @@
     "eslint": "^4.15.0",
     "jsdoc": "^3.5.5",
     "jsdoc-strip-async-await": "^0.1.0",
+    "json-filter-loader": "^1.0.0",
     "minami": "^1.2.3",
+    "parallel-webpack": "^2.2.0",
     "tslint": "^5.9.1",
     "tslint-config-typings": "^0.3.1",
-    "typescript": "^2.6.2"
+    "typescript": "^2.6.2",
+    "uglifyjs-webpack-plugin": "^1.0.0-beta.2",
+    "webpack": "^3.10.0"
   },
   "engines": {
     "node": ">=8.0.0"

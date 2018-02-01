@@ -16,6 +16,7 @@ package-lock.json
 # Misc
 .tmp/
 .vscode/
+webpack/
 
 # NPM ignore
 .eslintrc.json
