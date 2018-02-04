@@ -68,7 +68,8 @@ const thunderAPI = new ThunderAPI();
 // we'll get the profile of the player Abinavski, and log
 // the title he set.
 thunderAPI.getPlayer("Abinavski")
-  // We handle the data returned here.
+  // We handle the data returned here, in this case
+  // by logging the title the player has set.
   .then(data => console.log("Title:", data.title))
   // If an error occurred, we catch it here!
   .catch(err => console.error("Oh no, an error occurred!\n", err));
