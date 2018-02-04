@@ -1,4 +1,5 @@
-const request = require("snekfetch");
+const { URLs } = require("../util/Constants");
+const GETRequest = require("./GETRequest");
 const { JSDOM } = require("jsdom");
 
 /**
@@ -6,30 +7,6 @@ const { JSDOM } = require("jsdom");
  * @private
  */
 class RequestManager {
-  /**
-   * Creates a new RequestManager
-   * @param {string} userAgent The User agent to use
-   * @param {string} version The version of ThunderApi
-   */
-  constructor(userAgent, version) {
-    if (typeof userAgent === "undefined") throw new TypeError("An User Agent must be provided");
-    if (typeof version === "undefined") version = "0.0.1";
-    /**
-     * Version for the useragent
-     * @type {string}
-     * @private
-     * @readonly
-     */
-    this.version = version;
-
-    /**
-     * User agent for requests
-     * @type {string}
-     * @private
-     * @readonly
-     */
-    this.USER_AGENT = `ThunderAPI v${this.version} by devdutchy (https://github.com/devdutchy/thunderapi) being used by ${userAgent}`;
-  }
   /**
    * Get raw data from War Thunder
    * @param {string} key The key to search on, either `profile` or `squadron`
@@ -40,17 +17,11 @@ class RequestManager {
   async get(key, ...args) { // eslint-disable-line complexity
     let data = {};
     if (key.toLowerCase() === "profile") {
-      const res = await request
-        .get(`https://warthunder.com/en/community/userinfo/?nick=${args.join(" ")}`)
-        .set({ "User-Agent": this.USER_AGENT });
+      const res = await new GETRequest(`${URLs.user}${args.join(" ")}`).gen();
 
       if (res.status !== 200) {
-        if (res.status === 404) {
-          data.error = "Player not found";
-          return data;
-        }
-        data.error = `Server responded with code ${res.status}`;
-        return data;
+        if (res.status === 404) return null;
+        return res.status;
       }
       const { window: { document } } = new JSDOM(res.text);
 
@@ -62,7 +33,33 @@ class RequestManager {
         return data;
       }
 
+      /**
+       * Provides game statistics about a player
+       * @typedef {Object} ProfileStats
+       * @property {string} victories The amount of victories
+       * @property {string} completed The amount of completed battles
+       * @property {string} ratio The victory/battle ratio
+       * @property {string} sessions The amount of total sessions
+       * @property {string} deaths The amount of deaths
+       * @property {string} fighter The amount of time flown in a fighter
+       * @property {string} bomber The amount of time flown in a bomber
+       * @property {string} attacker The amount of time flown in an attacker
+       * @property {string} tank The amount of time driven in a tank
+       * @property {string} tankdestroyer The amount of time driven in a tank destroyer
+       * @property {string} heavytank The amount of time driven in a heavy tank
+       * @property {string} spaa The amount of time driven in a SPAA
+       * @property {string} airkills The total amount of air targets destroyed
+       * @property {string} groundkills The total amount of ground targets destroyed
+       * @property {string} battletime The total amount of time played
+       */
       const stats = {
+        /**
+         * Provides info for all three gamemodes
+         * @typedef {Object} DifficultyInfo
+         * @property {ProfileStats} arcade The info for the Arcade gamemode
+         * @property {ProfileStats} realistic The info for the Realistic gamemode
+         * @property {ProfileStats} simulator The info for the Simulator gamemode
+         */
         arcade: {
           victories: userstats.children[0].children[1].children[2].innerHTML.includes("N/A")
             ? userstats.children[0].children[1].children[2].innerHTML
@@ -310,19 +307,43 @@ class RequestManager {
             : userstats.children[0].children[17].children[4].innerHTML.replace("<div class=\" ptrim1\"></div>", "")
         }
       };
+
+      /**
+       * Provides statistics about a user's profile
+       * @typedef {Object} ProfileInfo
+       * @property {string} image The URL to the player's in-game avatar
+       * @property {string} nick The player's in-game name
+       * @property {string} title The player's title, if he has one
+       * @property {string} squadron The player's squadron, if he's in one
+       * @property {number} level The player's in-game experience level
+       * @property {string} registered The date when the player registered
+       * @property {CountryInfo} usa Statistics for the USA
+       * @property {CountryInfo} ussr Statistics for the USSR
+       * @property {CountryInfo} britain Statistics for Great Britain
+       * @property {CountryInfo} germany Statistics for Germany
+       * @property {CountryInfo} japan Statistics for Japan
+       * @property {CountryInfo} italy Statistics for Italy
+       */
       const profile = {
         image: userinfo.children[0].children[0].children[0].children[0].children[0].src,
         nick: args.join(" "),
         title: userinfo.children[0].children[0].children[0].children[0].children[2].innerHTML.replace("<br>", ""),
         squadron: userinfo.children[0].children[0].children[0].children[0].children[3].children[0].innerHTML !== ""
           ? userinfo.children[0].children[0].children[0].children[0].children[3].children[0].innerHTML
-          : "None",
+          : null,
         level: parseInt(userinfo.children[0].children[0].children[0].children[0].children[4].innerHTML
           .replace(userinfo.children[0].children[0].children[0].children[0].children[4].children[0].outerHTML, "")
           .trim()),
         registered: userinfo.children[0].children[0].children[0].children[0].children[5].innerHTML
           .replace("Registration date :", "")
           .trim(),
+        /**
+         * Provides info about a nation for a player's profile
+         * @typedef {Object} CountryInfo
+         * @property {number} vehicles The amount of total vehicles
+         * @property {number} elite The amount of elite (fully researched) vehicles
+         * @property {number} medals The amount of medals for the country
+         */
         usa: {
           vehicles: userinfo.children[0].children[3].children[2].innerHTML,
           elite: userinfo.children[0].children[3].children[3].innerHTML,
@@ -372,25 +393,15 @@ class RequestManager {
 
       return data;
     } else if (key.toLowerCase() === "squadron") {
-      const res = await request
-        .get(`https://warthunder.com/en/community/claninfo/${args.join(" ")}`)
-        .set({ "User-Agent": this.USER_AGENT });
+      const res = await new GETRequest(`${URLs.clan}${args.join(" ")}`, "get").gen();
 
-      if (res.status !== 200) {
-        if (res.status === 404) {
-          data.error = "Squadron not found, make sure to enter the full name instead of only the abbreviation";
-          return data;
-        }
-        data.error = `Server responded with code ${res.status}`;
-        return data;
-      }
       const { window: { document } } = new JSDOM(res.text);
 
       const claninfo = document.getElementsByClassName("clan-info")[0];
       const clanmembers = document.getElementsByClassName("clan-members")[0];
 
       if (!claninfo) {
-        data.error = "Squadron not found, make sure to enter the full name instead of only the abbreviation";
+        data.error = "Not found";
         return data;
       }
 
@@ -447,18 +458,8 @@ class RequestManager {
       };
       return data;
     } else if (key === "news") {
-      const res = await request
-        .get(`https://warthunder.com/en/news/page/${args.length && !isNaN(parseInt(args[0])) ? parseInt(args[0]) : 1}`)
-        .set({ "User-Agent": this.USER_AGENT });
+      const res = await new GETRequest(`${URLs.news}${args.join(" ")}`).gen();
 
-      if (res.status !== 200) {
-        if (res.status === 404) {
-          data.error = "Not found";
-          return data;
-        }
-        data.error = `Server responded with code ${res.status}`;
-        return data;
-      }
       const { window: { document } } = new JSDOM(res.text);
 
       const elements = document.getElementsByClassName("news-item__anons");
@@ -492,21 +493,10 @@ class RequestManager {
       }
       return _data;
     } else if (key === "changelog") {
-      const res = await request
-        .get(`https://warthunder.com/en/game/changelog/page/${args.length && !isNaN(parseInt(args[0])) ? parseInt(args[0]) : 1}`)
-        .set({ "User-Agent": this.USER_AGENT });
-
-      if (res.status !== 200) {
-        if (res.status === 404) {
-          data.error = "Not found";
-          return data;
-        }
-        data.error = `Server responded with code ${res.status}`;
-        return data;
-      }
+      const res = await new GETRequest(`${URLs.changelog}${args.join(" ")}`).gen();
       const { window: { document } } = new JSDOM(res.text);
 
-      const elements = document.getElementsByClassName("news-item__anons");
+      const elements = document.getElementsByClassName("news-item__anons ");
 
       if (!elements.length) {
         data.error = "Not found";

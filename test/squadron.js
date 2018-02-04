@@ -2,7 +2,7 @@
 /* eslint-disable no-console */
 const { ThunderAPI } = require("../src");
 
-const thunderAPI = new ThunderAPI("devdutchy");
+const thunderAPI = new ThunderAPI();
 const name = "35th Gopnik nation battle group";
 
 let test = 1;

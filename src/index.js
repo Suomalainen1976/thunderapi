@@ -1,4 +1,4 @@
-const RequestManager = require("./RequestManager");
+const RequestManager = require("./rest/RequestManager");
 const Profile = require("./structures/Profile");
 const Squadron = require("./structures/Squadron");
 const Package = require("../package.json");
@@ -6,24 +6,16 @@ const Package = require("../package.json");
 class ThunderApi {
   /**
    * Creates a new ThunderAPI class
-   * @param {string} userAgent The useragent to use
    * @param {number} [cacheSweepInterval=180000] The timeout in milliseconds to sweep the cache, default being 180000 milliseconds
    */
-  constructor(userAgent, cacheSweepInterval = 180000) {
-    /**
-     * The User Agent
-     * @type {string}
-     * @private
-     * @readonly
-     */
-    this.USER_AGENT = userAgent;
+  constructor(cacheSweepInterval = 180000) {
     /**
      * The Request Manager for ThunderApi
      * @type {RequestManager}
      * @private
      * @readonly
      */
-    this.requestManager = new RequestManager(this.USER_AGENT, Package.version);
+    this.requestManager = new RequestManager();
     /**
      * A map of cached profiles/squadrons.
      * Cache will be sweeped after the time passed
@@ -44,7 +36,7 @@ class ThunderApi {
      */
     this._intervals = [];
 
-    const interval = setInterval(this.cache.clear, this.cacheSweepInterval);
+    const interval = setInterval(this.sweepCache, this.cacheSweepInterval);
     this._intervals.push(interval);
   }
 
@@ -67,7 +59,7 @@ class ThunderApi {
    */
   getPlayer(player, getFromCache = true, shouldCache = true) {
     return new Promise(async (resolve, reject) => {
-      if (typeof name !== "string") reject(new TypeError("Player name should be a string"));
+      if (typeof player !== "string") reject(new TypeError("Player name should be a string"));
       if (this.cache.has(player) && getFromCache) {
         const profile = this.cache.get(player);
         resolve(profile);
