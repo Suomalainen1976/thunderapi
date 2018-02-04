@@ -1,5 +1,6 @@
 {
   "plugins": [
-    "node_modules/jsdoc-strip-async-await"
+    "node_modules/jsdoc-strip-async-await",
+    "plugins/markdown"
   ]
 }
