@@ -61,14 +61,14 @@ npm install devdutchy/thunderapi
 
 ```js
 const { ThunderAPI } = require("thunderapi");
-// Replace 'useragent' with either your in-game name, or
-// with something else which confirms your identity.
-const thunderAPI = new ThunderAPI("useragent");
+// Create a new instance of ThunderAPI
+const thunderAPI = new ThunderAPI();
 
 // The player can be any in-game player. In this example,
 // we'll get the profile of the player Abinavski, and log
 // the title he set.
 thunderAPI.getPlayer("Abinavski")
+  // We handle the data returned here.
   .then(data => console.log("Title:", data.title))
   // If an error occurred, we catch it here!
   .catch(err => console.error("Oh no, an error occurred!\n", err));
